@@ -21,7 +21,7 @@ quick overview:
 * set background dark
 * Immediately highlight search matches
 * Keep min of 10 lines above/below cursor
-* Show matching () {} [] etc
+* Show matching ( ) { } [ ] etc
 * Tab completion works like bash
 * Toggle paste mode
 
