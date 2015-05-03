@@ -171,12 +171,6 @@ function sbash ()
 	  source .bashrc
 }
 
-# fix htdocs permissions
-function fixdir() {
- cd /opt/lampp/htdocs;
- sudo chmod 777 -R $1;
-}
-
 
 # Install latest wordpress on htdocs
 function installwp () {
