@@ -12,7 +12,7 @@ quick overview:
 * start/stop lampp aliases
 * directory aliases
 * ls family shortcuts
-* Custom bash prompt [PS1]  (screenshot above)
+* Custom bash prompt [PS1]   [screenshot above]
 * Custom functions: edit/source .bashrc, quick Wordpress install
 
 ### .vimrc highlights
