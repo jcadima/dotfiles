@@ -12,6 +12,9 @@ alias cls='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias systeminfo='/usr/sbin/system_profiler SPHardwareDataType'
+# if  site allows indexing, download all images into the current directory
+alias allimages='wget -r --no-parent http://targetsite.com/images/'
+
 
 # Directories shortcuts
 alias docs='cd ~/Documents;ls -l'
@@ -34,6 +37,9 @@ alias edithosts='sudo sublime /etc/hosts'
 # Laravel
 alias tinker='artisan tinker'
 alias migrate="php artisan migrate"
+
+# System
+alias top6='ps aux | sort -rk 3,3 | head -n 6' # top 6 cpu processes
 
 #-------------------------------------------------------------
 # The 'ls' family (this assumes you use a recent GNU ls)
