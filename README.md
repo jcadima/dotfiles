@@ -4,7 +4,7 @@ Personal dot files:  .bashrc and .vimrc
 ### .bashrc highlights
 quick overview:
 
-![alt tag](http://i.imgur.com/iPMrhOs.png)
+![alt tag](http://juancadima.com/wp-content/uploads/bash.jpg)
 
 * compress/extract  aliases
 * shutdown/restart aliases
@@ -12,6 +12,7 @@ quick overview:
 * start/stop lampp aliases
 * directory aliases
 * ls family shortcuts
+* Laravel + Git shortcuts
 * Custom bash prompt [PS1]   [screenshot above]
 * Custom functions: edit/source .bashrc, quick Wordpress install
 

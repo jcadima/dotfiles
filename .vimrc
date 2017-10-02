@@ -1,18 +1,7 @@
-" .vimrc 
-
-syntax on                 " Syntax highlighting.
-syntax enable
-
-
+set term=xterm-256color  " When using iTerm 2
 set nocompatible          " No compatibility with VI.
-filetype on               " Recognize filetype extension.
-filetype indent on        " Enable file indent.
-filetype plugin on        " Allow plugins to be loaded by file type.
+syntax on
 
-
-set background=dark       " Light background for color schemes.
-colorscheme solarized            " Solarized color scheme.
-highlight ColorColumn ctermbg=10
 
 set smartindent
 set colorcolumn=80
