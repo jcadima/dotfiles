@@ -4,7 +4,7 @@ Personal dot files:  .bashrc and .vimrc
 ### .bashrc highlights
 quick overview:
 
-![alt tag](http://juancadima.com/wp-content/uploads/bash.jpg)
+![alt tag](http://juancadima.com/wp-content/uploads/terminal.jpg)
 
 * compress/extract  aliases
 * shutdown/restart aliases
