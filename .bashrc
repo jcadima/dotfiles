@@ -7,19 +7,18 @@ alias tsee='tar -tvf'
 alias off="sudo shutdown -h now"
 alias restart="sudo reboot"
 alias x='exit'
-alias remove='sudo apt-get remove'
-alias cls='clear'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias systeminfo='/usr/sbin/system_profiler SPHardwareDataType'
 # if  site allows indexing, download all images into the current directory
 alias allimages='wget -r --no-parent http://targetsite.com/images/'
 
 
+alias cls='clear'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias systeminfo='/usr/sbin/system_profiler SPHardwareDataType'
+
 # Directories shortcuts
 alias docs='cd ~/Documents;ls -l'
 alias downs='cd  ~/Downloads;ls -l'
-alias www='cd /Applications/XAMPP/xamppfiles/htdocs;ls -l'
 alias pics='cd ~/Pictures ls -l'
 
 # Git
@@ -30,16 +29,13 @@ alias pushgit='git push -u origin master'
 alias du="du -h"
 alias df="df -h" 
 
-# open with sublime
-alias editvhosts='sudo sublime /Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf'
+# open hosts with sublime
 alias edithosts='sudo sublime /etc/hosts' 
 
-# Laravel
-alias tinker='artisan tinker'
-alias migrate="php artisan migrate"
 
 # System
 alias top6='ps aux | sort -rk 3,3 | head -n 6' # top 6 cpu processes
+
 
 #-------------------------------------------------------------
 # The 'ls' family (this assumes you use a recent GNU ls)
@@ -83,6 +79,8 @@ CYAN='\e[1;36m'
 NORMAL='\[\033[00m\]'
 NC='\e[0m'              # No Color
 PS1="$RED[ $LIGHTCYAN\u$LIGHTBLUE @ $LIGHTGREEN\h $RED]  $LIGHTGREEN=>  $LIGHTBLUE\w $LIGHTGREEN \n > $NORMAL "
+
+
 ##################################################
 #    ___                  _   _                  #
 #   / __\_   _ _ __   ___| |_(_) ___  _ __  ___  #
@@ -91,44 +89,58 @@ PS1="$RED[ $LIGHTCYAN\u$LIGHTBLUE @ $LIGHTGREEN\h $RED]  $LIGHTGREEN=>  $LIGHTBL
 # \/     \__,_|_| |_|\___|\__|_|\___/|_| |_|___/ #
 ##################################################
 # edit bashrc
-function ebash () {
+function ebash ()
+{
     sublime /Users/armadillo/.bashrc
 }
 
-# source bashrc
-function sbash () {
-    source ~/.bashrc
+function runmaria() {
+    /Applications/xampp/xamppfiles/bin/mysql -u root -p
 }
 
-#  New laravel project
+function evim(){
+   sublime /Users/armadillo/.vimrc
+}
+
+ #source bashrc
+function sbash ()
+{
+      source ~/.bashrc
+}
+
 function laraproject() {
     composer create-project laravel/laravel $1 --prefer-dist
 }
 
-# display your public IPv4
+# create a Laravel 5.4 project
+function laraproject54() {
+    composer create-project --prefer-dist laravel/laravel $1 5.4 
+}
+
 function myip() {
     myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
     echo "Your Public IP: ${myip}"
 }
 
+
 # Install latest wordpress on htdocs
 function installwp () {
-    echo "###### Creating subdirectory $1 ... in /opt/lampp/htdocs/ ######"
+echo "###### Creating subdirectory $1 ... in /opt/lampp/htdocs/ ######"
 
-    sudo mkdir /opt/lampp/htdocs/$1
-    sudo chmod 777 -R /opt/lampp/htdocs
-    if [ -d /opt/lampp/htdocs/$1 ]; then
-        cd /opt/lampp/htdocs/$1
-        echo "###### Downloading latest Wordpress ... ######"
-        wget http://wordpress.org/latest.tar.gz
-        echo "###### Extracting Wordpress archive ... ######"
-        tar xfz latest.tar.gz
+sudo mkdir /opt/lampp/htdocs/$1
+sudo chmod 777 -R /opt/lampp/htdocs
+if [ -d /opt/lampp/htdocs/$1 ]; then
+    cd /opt/lampp/htdocs/$1
+    echo "###### Downloading latest Wordpress ... ######"
+    wget http://wordpress.org/latest.tar.gz
+    echo "###### Extracting Wordpress archive ... ######"
+    tar xfz latest.tar.gz
 
-        mv wordpress/* ./
-        echo "###### /opt/lampp/htdocs/$1  successfully created #####"
-    else 
-        echo "###### /opt/lampp/htdocs/$1  could not be created #####"
-    fi
+    mv wordpress/* ./
+    echo "###### /opt/lampp/htdocs/$1  successfully created #####"
+else 
+    echo "###### /opt/lampp/htdocs/$1  could not be created #####"
+fi
 
 }
 
