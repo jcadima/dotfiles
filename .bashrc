@@ -94,25 +94,30 @@ function ebash ()
     sublime /Users/armadillo/.bashrc
 }
 
-function runmaria() {
-    /Applications/xampp/xamppfiles/bin/mysql -u root -p
-}
-
 function evim(){
-   sublime /Users/armadillo/.vimrc
+    sublime /Users/armadillo/.vimrc
 }
 
  #source bashrc
 function sbash ()
 {
-      source ~/.bashrc
+    source ~/.bashrc
 }
 
+# Create latest laravel project version
+# ex: laraproject myblog
 function laraproject() {
     composer create-project laravel/laravel $1 --prefer-dist
 }
 
+# Create Laravel 5.5 project
+# ex: laraproject55 myblog
+function laraproject55() {
+    composer create-project --prefer-dist laravel/laravel $1 5.5
+}
+
 # create a Laravel 5.4 project
+# ex: laraproject54 eventapp
 function laraproject54() {
     composer create-project --prefer-dist laravel/laravel $1 5.4 
 }
