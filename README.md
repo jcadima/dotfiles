@@ -1,10 +1,10 @@
 ### DOT FILES
 
-Personal dot files:  .bashrc and .vimrc
-### .bashrc highlights
+Personal dot files:  .bashrc, .zshrc and .vimrc
+### .bashrc/ .zshrc highlights
 quick overview:
 
-![alt tag](http://juancadima.com/wp-content/uploads/terminal.jpg)
+![alt tag](http://juancadima.com/wp-content/uploads/zsh-min.png)
 
 * compress/extract  aliases
 * shutdown/restart aliases
