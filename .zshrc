@@ -159,20 +159,6 @@ alias vp='~/Homestead;vagrant provision'
 alias vr='~/Homestead;vagrant reload'
 
 
-
-######## FUNCTIONS ############
-
-function ezsh() {
-	vim ~/.zshrc
-}
-
-function szsh() {
- 	source ~/.zshrc
-}
-
-
-
-
 # your public IP address
 function myip() {
   myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
