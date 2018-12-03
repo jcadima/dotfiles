@@ -152,6 +152,13 @@ alias du="du -h"
 alias df="df -h"
 
 
+# Vagrant, Assumes Homestead directory is located in home directory 
+alias vu='cd ~/Homestead;vagrant up'
+alias vh='cd ~/Homestead;vagrant halt'
+alias vp='~/Homestead;vagrant provision'
+alias vr='~/Homestead;vagrant reload'
+
+
 
 ######## FUNCTIONS ############
 
@@ -165,12 +172,6 @@ function szsh() {
 
 
 
-# vagrant, ex:  
-# homestead up
-# homestead halt
-function homestead() {
-	( cd ~/Homestead && vagrant $* )
-}
 
 # your public IP address
 function myip() {
