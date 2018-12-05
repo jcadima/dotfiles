@@ -6,15 +6,12 @@ quick overview:
 
 ![alt tag](http://juancadima.com/wp-content/uploads/zsh-min.png)
 
-* compress/extract  aliases
-* shutdown/restart aliases
-* install/remove aliases
-* start/stop lampp aliases
 * directory aliases
 * ls family shortcuts
 * Laravel + Git shortcuts
 * Custom bash prompt [PS1]   [screenshot above]
 * Custom functions: edit/source .bashrc, quick Wordpress install
+* zshell POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
 
 ### .vimrc highlights
 quick overview:
