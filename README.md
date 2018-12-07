@@ -11,7 +11,7 @@ quick overview:
 * Laravel + Git shortcuts
 * Custom bash prompt [PS1]   [screenshot above]
 * Custom functions: edit/source .bashrc, quick Wordpress install
-* zshell POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
+* zshell POWERLEVEL9K
 
 ### .vimrc highlights
 quick overview:

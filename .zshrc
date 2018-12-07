@@ -140,6 +140,7 @@ alias cls="clear"
 alias gs="git status"
 alias x="exit"
 alias ..="cd .."
+alias edithost='sudo sublime /etc/hosts'
 
 
 # Git
