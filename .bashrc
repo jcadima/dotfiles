@@ -4,33 +4,33 @@
 alias ut='tar -zxvf' # untar
 alias t='tar -cvf' # to compress files: t file-$(date +%F).tar 
 alias tsee='tar -tvf'
-alias off="sudo shutdown -h now"
-alias restart="sudo reboot"
 alias x='exit'
-# if  site allows indexing, download all images into the current directory
-alias allimages='wget -r --no-parent http://targetsite.com/images/'
-
-
 alias cls='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ebash='vim ~/.bashrc'
+alias sbash='source ~/.bashrc'
+alias myip="curl http://ipecho.net/plain; echo"
+alias checktemp='sudo tlp-stat | grep -i "CPU temp"' # check CPU temperature with tlp
 alias systeminfo='/usr/sbin/system_profiler SPHardwareDataType'
 
 # Directories shortcuts
 alias docs='cd ~/Documents;ls -l'
-alias downs='cd  ~/Downloads;ls -l'
-alias pics='cd ~/Pictures ls -l'
+alias downs='cd ~/Downloads;ls -l'
+alias pics='cd ~/Pictures;ls -l'
+alias vids='cd ~/Videos;ls -l'
 
 # Git
-alias gs='git status'
-alias pushgit='git push -u origin master'
+alias gs="git status"
+alias ga="git add ."
+alias gp="git push -u origin master"
 
 # Use human-readable filesizes
 alias du="du -h"
 alias df="df -h" 
 
-# open hosts with sublime
-alias edithosts='sudo sublime /etc/hosts' 
+# open hosts with vim
+alias ehost='sudo vim /etc/hosts' 
 
 
 # System
@@ -79,74 +79,3 @@ CYAN='\e[1;36m'
 NORMAL='\[\033[00m\]'
 NC='\e[0m'              # No Color
 PS1="$RED[ $LIGHTCYAN\u$LIGHTBLUE @ $LIGHTGREEN\h $RED]  $LIGHTGREEN=>  $LIGHTBLUE\w $LIGHTGREEN \n > $NORMAL "
-
-
-##################################################
-#    ___                  _   _                  #
-#   / __\_   _ _ __   ___| |_(_) ___  _ __  ___  #
-#  / _\ | | | | '_ \ / __| __| |/ _ \| '_ \/ __| #
-# / /   | |_| | | | | (__| |_| | (_) | | | \__ \ #
-# \/     \__,_|_| |_|\___|\__|_|\___/|_| |_|___/ #
-##################################################
-# edit bashrc
-function ebash ()
-{
-    sublime /Users/armadillo/.bashrc
-}
-
-function evim(){
-    sublime /Users/armadillo/.vimrc
-}
-
- #source bashrc
-function sbash ()
-{
-    source ~/.bashrc
-}
-
-# Create latest laravel project version
-# ex: laraproject myblog
-function laraproject() {
-    composer create-project laravel/laravel $1 --prefer-dist
-}
-
-# Create Laravel 5.5 project
-# ex: laraproject55 myblog
-function laraproject55() {
-    composer create-project --prefer-dist laravel/laravel $1 5.5
-}
-
-# create a Laravel 5.4 project
-# ex: laraproject54 eventapp
-function laraproject54() {
-    composer create-project --prefer-dist laravel/laravel $1 5.4 
-}
-
-function myip() {
-    myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
-    echo "Your Public IP: ${myip}"
-}
-
-
-# Install latest wordpress on htdocs
-function installwp () {
-echo "###### Creating subdirectory $1 ... in /opt/lampp/htdocs/ ######"
-
-sudo mkdir /opt/lampp/htdocs/$1
-sudo chmod 777 -R /opt/lampp/htdocs
-if [ -d /opt/lampp/htdocs/$1 ]; then
-    cd /opt/lampp/htdocs/$1
-    echo "###### Downloading latest Wordpress ... ######"
-    wget http://wordpress.org/latest.tar.gz
-    echo "###### Extracting Wordpress archive ... ######"
-    tar xfz latest.tar.gz
-
-    mv wordpress/* ./
-    echo "###### /opt/lampp/htdocs/$1  successfully created #####"
-else 
-    echo "###### /opt/lampp/htdocs/$1  could not be created #####"
-fi
-
-}
-
-

@@ -1,9 +1,8 @@
-export TERM="xterm-256color"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/armadillo/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -34,7 +33,7 @@ POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0B4'
 POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='\uE0B6'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰\uF460\uF460\uF460 "
 
@@ -103,7 +102,6 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  osx
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -134,19 +132,26 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
 alias cls="clear"
-alias gs="git status"
 alias x="exit"
 alias ..="cd .."
-alias edithost='sudo sublime /etc/hosts'
+alias ...='cd ../..'
+alias myip="curl http://ipecho.net/plain; echo"
+alias ezsh='vim ~/.zshrc'
+alias szsh='source ~/.zshrc'
+alias ehost='sudo vim /etc/hosts'
+alias checktemp='sudo tlp-stat | grep -i "CPU temp"' # check CPU temperature with tlp
 
+
+alias docs='cd ~/Documents;ls -l'
+alias downs='cd ~/Downloads;ls -l'
+alias pics='cd ~/Pictures;ls -l'
+alias vids='cd ~/Videos;ls -l'
 
 # Git
 alias gs="git status"
 alias ga="git add ."
-alias pushgit="git push -u origin master"
+alias gp="git push -u origin master"
 
 # Human readable filesize
 alias du="du -h"
@@ -156,12 +161,6 @@ alias df="df -h"
 # Vagrant, Assumes Homestead directory is located in home directory 
 alias vu='cd ~/Homestead;vagrant up'
 alias vh='cd ~/Homestead;vagrant halt'
-alias vp='~/Homestead;vagrant provision'
-alias vr='~/Homestead;vagrant reload'
-
-
-# your public IP address
-function myip() {
-  myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
-  echo "Your public IP: ${myip}"
-}
+alias vp='cd ~/Homestead;vagrant provision'
+alias vr='cd ~/Homestead;vagrant reload'
+alias vs='cd ~/Homestead;vagrant ssh'
