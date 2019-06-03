@@ -8,9 +8,8 @@ quick overview:
 
 * directory aliases
 * ls family shortcuts
-* Laravel + Git shortcuts
 * Custom bash prompt [PS1]   [screenshot above]
-* Custom functions: edit/source .bashrc, quick Wordpress install
+* Custom functions: edit/source .bashrc
 * zshell POWERLEVEL9K
 
 ### .vimrc highlights
