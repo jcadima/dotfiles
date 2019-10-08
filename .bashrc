@@ -103,5 +103,5 @@ PS1="$RED[ $LIGHTCYAN\u$LIGHTBLUE @ $LIGHTGREEN\h $RED]  $LIGHTGREEN=>  $LIGHTBL
 
 # this will let you run any Vagrant command from anywhere on your system, ex: v up
 function v() {
-    ( cd ~/Homestead && vagrant $* )
+    ( cd ~/Homestead && vagrant $* && cd -)
 }

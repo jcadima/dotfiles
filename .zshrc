@@ -101,5 +101,5 @@ alias df="df -h"
 
 # this will let you run any Vagrant command from anywhere on your system
 function v() {
-    ( cd ~/Homestead && vagrant $* )
+    ( cd ~/Homestead && vagrant $* && cd -)
 }
