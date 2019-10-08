@@ -1,6 +1,12 @@
-# CUSTOM STUFF
 
-# some more aliases
+###################################
+#   _   _    _   _   __  ___  __  #
+#  / \ | |  | | / \ / _|| __|/ _| #
+# | o || |_ | || o |\_ \| _| \_ \ #
+# |_n_||___||_||_n_||__/|___||__/ #
+#								  #
+###################################
+
 alias ut='tar -zxvf' # untar
 alias t='tar -cvf' # to compress files: t file-$(date +%F).tar 
 alias tsee='tar -tvf'
@@ -11,7 +17,7 @@ alias ...='cd ../..'
 alias ebash='vim ~/.bashrc'
 alias sbash='source ~/.bashrc'
 alias myip="curl http://ipecho.net/plain; echo"
-alias checktemp='sudo tlp-stat | grep -i "CPU temp"' # check CPU temperature with tlp
+alias checktemp='sudo tlp-stat | grep -i "CPU temp"' # grep CPU temperature with tlp
 alias systeminfo='/usr/sbin/system_profiler SPHardwareDataType'
 
 # Directories shortcuts
@@ -54,14 +60,13 @@ alias lr='ls -lR'          # recursive ls
 alias tree='tree -Csu'     # nice alternative to 'recursive ls'
 
 
-############################################################
-#  _____ _              ___                           _    #
-# /__   \ |__   ___    / _ \_ __ ___  _ __ ___  _ __ | |_  #
-#   / /\/ '_ \ / _ \  / /_)/ '__/ _ \| '_ ` _ \| '_ \| __| #
-#  / /  | | | |  __/ / ___/| | | (_) | | | | | | |_) | |_  #
-#  \/   |_| |_|\___| \/    |_|  \___/|_| |_| |_| .__/ \__| #
-#                                              |_|         #
-############################################################    
+################################################
+#  ___  _ _  ___   ___ ___  _  _   _  ___ ___  #
+# |_ _|| U || __| | o \ o \/ \| \_/ || o \_ _| #
+#  | | |   || _|  |  _/   ( o ) \_/ ||  _/| |  #
+#  |_| |_n_||___| |_| |_|\\\_/|_| |_||_|  |_|  #
+#											   #
+################################################
 
 # Greeting, motd etc...
 #-------------------------------------------------------------
@@ -79,3 +84,24 @@ CYAN='\e[1;36m'
 NORMAL='\[\033[00m\]'
 NC='\e[0m'              # No Color
 PS1="$RED[ $LIGHTCYAN\u$LIGHTBLUE @ $LIGHTGREEN\h $RED]  $LIGHTGREEN=>  $LIGHTBLUE\w $LIGHTGREEN \n > $NORMAL "
+
+
+#############################################
+#  ___  _ _  _  _  __  ___  _  _  _  _  __  #
+# | __|| | || \| |/ _||_ _|| |/ \| \| |/ _| #
+# | _| | U || \\ ( (_  | | | ( o ) \\ |\_ \ #
+# |_|  |___||_|\_|\__| |_| |_|\_/|_|\_||__/ #
+#                                           #
+#############################################
+
+# Vagrant, Assumes Homestead directory is located in home directory 
+# v up        = vagrant up
+# v halt      = vagrant halt
+# v provision = vagrant provision
+# v reload    = vagrant reload
+# v ssh       = vagrant ssh
+
+# this will let you run any Vagrant command from anywhere on your system, ex: v up
+function v() {
+    ( cd ~/Homestead && vagrant $* )
+}
