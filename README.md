@@ -2,16 +2,14 @@
 
 Personal dot files:  .bashrc, .zshrc and .vimrc
 ### .bashrc/ .zshrc highlights
-quick overview:
 
-ZSHELL example
-![alt tag](http://juancadima.com/wp-content/uploads/zsh-min.png)
+![alt tag](https://i.imgur.com/uxY0ZQh.png)
 
 * directory aliases
 * ls family shortcuts
-* Custom bash prompt [PS1] 
+* Custom bash prompt [PS1]  for bash
 * .bashrc
-* zshell with POWERLEVEL9K
+* zshell with POWERLEVEL9K (screenshot)
 
 ### .vimrc highlights
 quick overview:

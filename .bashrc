@@ -17,7 +17,7 @@ alias ...='cd ../..'
 alias ebash='vim ~/.bashrc'
 alias sbash='source ~/.bashrc'
 alias myip="curl http://ipecho.net/plain; echo"
-alias checktemp='sudo tlp-stat | grep -i "CPU temp"' # grep CPU temperature with tlp
+# alias checktemp='sudo tlp-stat | grep -i "CPU temp"' # grep CPU temperature with tlp
 alias systeminfo='/usr/sbin/system_profiler SPHardwareDataType'
 
 # Directories shortcuts
@@ -59,6 +59,18 @@ alias lmore='ls -al |more'    # pipe through 'more'
 alias lr='ls -lR'          # recursive ls
 alias tree='tree -Csu'     # nice alternative to 'recursive ls'
 
+alias vu='cd ~/Homestead && vagrant up && cd -'
+alias vh='cd ~/Homestead && vagrant halt && cd -'
+alias vp='cd ~/Homestead && vagrant provision && cd -'
+alias vr='cd ~/Homestead && vagrant reload && cd -'
+alias vs='cd ~/Homestead && vagrant ssh && cd -'
+
+# HOMESTEAD/VAGRANT
+alias vu='cd ~/Homestead && vagrant up && cd -'
+alias vh='cd ~/Homestead && vagrant halt && cd -'
+alias vp='cd ~/Homestead && vagrant provision && cd -'
+alias vr='cd ~/Homestead && vagrant reload && cd -'
+alias vs='cd ~/Homestead && vagrant ssh && cd -'
 
 ################################################
 #  ___  _ _  ___   ___ ___  _  _   _  ___ ___  #
@@ -86,22 +98,3 @@ NC='\e[0m'              # No Color
 PS1="$RED[ $LIGHTCYAN\u$LIGHTBLUE @ $LIGHTGREEN\h $RED]  $LIGHTGREEN=>  $LIGHTBLUE\w $LIGHTGREEN \n > $NORMAL "
 
 
-#############################################
-#  ___  _ _  _  _  __  ___  _  _  _  _  __  #
-# | __|| | || \| |/ _||_ _|| |/ \| \| |/ _| #
-# | _| | U || \\ ( (_  | | | ( o ) \\ |\_ \ #
-# |_|  |___||_|\_|\__| |_| |_|\_/|_|\_||__/ #
-#                                           #
-#############################################
-
-# Vagrant, Assumes Homestead directory is located in home directory 
-# v up        = vagrant up
-# v halt      = vagrant halt
-# v provision = vagrant provision
-# v reload    = vagrant reload
-# v ssh       = vagrant ssh
-
-# this will let you run any Vagrant command from anywhere on your system, ex: v up
-function v() {
-    ( cd ~/Homestead && vagrant $* && cd -)
-}

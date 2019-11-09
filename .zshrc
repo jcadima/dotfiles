@@ -83,23 +83,9 @@ alias pushgit="git push -u origin master"
 alias du="du -h"
 alias df="df -h"
 
-
-#############################################
-#  ___  _ _  _  _  __  ___  _  _  _  _  __  #
-# | __|| | || \| |/ _||_ _|| |/ \| \| |/ _| #
-# | _| | U || \\ ( (_  | | | ( o ) \\ |\_ \ #
-# |_|  |___||_|\_|\__| |_| |_|\_/|_|\_||__/ #
-#                                           #
-#############################################
-
-# Vagrant, Assumes Homestead directory is located in home directory 
-# v up        = vagrant up
-# v halt      = vagrant halt
-# v provision = vagrant provision
-# v reload    = vagrant reload
-# v ssh       = vagrant ssh
-
-# this will let you run any Vagrant command from anywhere on your system
-function v() {
-    ( cd ~/Homestead && vagrant $* && cd -)
-}
+# HOMESTEAD/VAGRANT
+alias vu='cd ~/Homestead && vagrant up && cd -'
+alias vh='cd ~/Homestead && vagrant halt && cd -'
+alias vp='cd ~/Homestead && vagrant provision && cd -'
+alias vr='cd ~/Homestead && vagrant reload && cd -'
+alias vs='cd ~/Homestead && vagrant ssh && cd -'
