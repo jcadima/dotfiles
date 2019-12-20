@@ -16,8 +16,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ebash='vim ~/.bashrc'
 alias sbash='source ~/.bashrc'
+alias evim='vim ~/.vimrc'
+alias svim='source ~/.vimrc'
 alias myip="curl http://ipecho.net/plain; echo"
-# alias checktemp='sudo tlp-stat | grep -i "CPU temp"' # grep CPU temperature with tlp
 alias systeminfo='/usr/sbin/system_profiler SPHardwareDataType'
 
 # Directories shortcuts
@@ -59,11 +60,6 @@ alias lmore='ls -al |more'    # pipe through 'more'
 alias lr='ls -lR'          # recursive ls
 alias tree='tree -Csu'     # nice alternative to 'recursive ls'
 
-alias vu='cd ~/Homestead && vagrant up && cd -'
-alias vh='cd ~/Homestead && vagrant halt && cd -'
-alias vp='cd ~/Homestead && vagrant provision && cd -'
-alias vr='cd ~/Homestead && vagrant reload && cd -'
-alias vs='cd ~/Homestead && vagrant ssh && cd -'
 
 # HOMESTEAD/VAGRANT
 alias vu='cd ~/Homestead && vagrant up && cd -'
