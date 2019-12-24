@@ -1,39 +1,68 @@
-set term=xterm-256color  " When using iTerm 2
-set nocompatible          " No compatibility with VI.
-syntax on
+let mapleader=","         " set leader key to ,
 
+syntax enable
+set number
+set ruler				   " display row, column, % of document
+set shiftwidth=2
+set showcmd				   
+set cursorline			   " set current line cursorline
+set showmatch			   " show matching {} ()
+set hlsearch               " highlight search
+set pastetoggle=<leader>z  " avoid typing :set paste and :set nopaste 
+set scrolloff=10           " Keep min of 10 lines above/below cursor.
 
-set smartindent
-set colorcolumn=80
-set expandtab             " Expand tabs with spaces.
-set ignorecase            " Ignore case in regular expressions
-set incsearch             " Immediately highlight search matches.
-set modeline              " Check for a modeline.
-set noerrorbells          " No beeps on errors.
-set nohls                 " Don't highlight all regex matches.
-set nowrap                " Don't soft wrap.
-set number                " Display line numbers.
-set ruler                 " Display row, column and % of document.
-set scrolloff=10          " Keep min of 10 lines above/below cursor.
-set shiftwidth=2          " >> and << shift 3 spaces.
-set showcmd               " Show partial commands in the status line.
-set showmatch             " Show matching () {} [] etc..
-set showmode              " Show current mode.
-set smartcase             " Searches are case-sensitive if caps used.
-set softtabstop=2         " See spaces as tabs.
-set tabstop=2             " <Tab> move three characters.
-set textwidth=79          " Hard wrap at 79 characters.
-set virtualedit=block     " Allow the cursor to go where there's no char.
-set wildmode=longest,list " Tab completion works like bash.
+" copy all contents from beginning to end of file to clipbard buffer
+nnoremap <leader>a gg"+yG
 
+" remove  text from current cursor position to the end of line
+nnoremap rs v$d
 
-" Toggle paste mode.
-noremap <Leader>p :set paste!<CR>
+" copy current line to a new line below and place cursor at the end in insert mode
+nmap clb yypA
+ 
+" copy current line to a new line above  and place cursor at the end in insert mode
+nmap cla yyPA
+ 
+" Clone whole paragraph below
+nmap cpa yap<S-{>p 
 
-" Toggle highlighting of the last search.
-noremap <Leader>h :set hlsearch! hlsearch?<CR>
+" Clone whole paragraph below
+nmap cpb yap<S-}>p 
 
+" Save and quit with ,x 
+noremap <leader>x :x<cr>
 
+" Save and Quit with ,x in Insert Mode
+inoremap <leader>x <C-c>:x<cr>
 
+" Quit File with ,q
+noremap <leader>q :q<cr>
 
+" Quit File with ,q  in insert mode
+inoremap <leader>q <C-c>:q<cr>
+
+" Save File with ,s
+nnoremap <leader>s :w<cr>
+
+" Save Files in insert mode with ,s  <C-c> is CTRL-c which exits insert mode
+inoremap <leader>s <C-c>:w<cr>
+
+"surround word in double quotes
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+
+"surround word in single quotes
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+
+" reload .vimrc
+nnoremap <leader>rv :source $MYVIMRC<CR>
+
+" remap ESC key
+inoremap jk <Esc>
+cnoremap jk <Esc>
+
+" Move line up/down
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
 
