@@ -57,16 +57,16 @@ source $ZSH/oh-my-zsh.sh
 ###################################
 alias cls="clear"
 alias x="exit"
-alias ..="cd .."
+alias ..='cd ..;ls -al'
+alias ...='cd ../..;ls -al'
 alias ehost='sudo vim /etc/hosts'
 alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias ezsh='vim ~/.zshrc'
-alias www='cd ~/www'
 alias szsh='source ~/.zshrc'
-alias docs='cd ~/Documents; ls -l'
-alias downs='cd ~/Downloads; ls -l'
-alias pics='cd ~/Pictures; ls -l'
-alias vids='cd ~/Videos; ls -l'
+alias docs='cd ~/Documents; ls -al'
+alias downs='cd ~/Downloads; ls -al'
+alias pics='cd ~/Pictures; ls -al'
+alias vids='cd ~/Videos; ls -al'
 alias myip="curl http://ipecho.net/plain; echo"
 
 # Git
@@ -117,8 +117,8 @@ ex ()
 # list directory contents after directory change, 
 # using "to" as function name to avoid collision with vagrant aliases section
 # usage:  to directory_name
-function to {
-    builtin cd "$@" && ls -l
+function to() {
+    builtin cd "$@" && ls -al
 }
 
 

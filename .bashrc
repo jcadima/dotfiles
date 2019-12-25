@@ -14,8 +14,8 @@
 ###################################
 alias x='exit'
 alias cls='clear'
-alias ..='cd ..'
-alias ...='cd ../..'
+alias ..='cd ..;ls -al'
+alias ...='cd ../..;ls     -al'
 alias ebash='vim ~/.bashrc'
 alias sbash='source ~/.bashrc'
 alias evim='vim ~/.vimrc'
@@ -23,10 +23,10 @@ alias svim='source ~/.vimrc'
 alias myip="curl http://ipecho.net/plain; echo"
 
 # Directories shortcuts
-alias docs='cd ~/Documents; ls -l'
-alias downs='cd ~/Downloads; ls -l'
-alias pics='cd ~/Pictures; ls -l'
-alias vids='cd ~/Videos; ls -l'
+alias docs='cd ~/Documents; ls -al'
+alias downs='cd ~/Downloads; ls -al'
+alias pics='cd ~/Pictures; ls -al'
+alias vids='cd ~/Videos; ls -al'
 
 # Git
 alias gs="git status"
@@ -124,8 +124,8 @@ ex ()
 # list directory contents after directory change, 
 # using "to" as function name to avoid collision with vagrant aliases section
 # usage:  to directory_name
-function to {
-    builtin cd "$@" && ls -l
+function to() {
+    builtin cd "$@" && ls -al
 }
 
 # git commit message
