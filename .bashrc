@@ -1,3 +1,9 @@
+#      _  ____ 
+#     | |/ ___|		
+#  _  | | |    		Juan J Cadima
+# | |_| | |___ 		https://github.com/jcadima
+#  \___/ \____|	
+
 
 ###################################
 #   _   _    _   _   __  ___  __  #
@@ -6,10 +12,6 @@
 # |_n_||___||_||_n_||__/|___||__/ #
 #								  #
 ###################################
-
-alias ut='tar -zxvf' # untar
-alias t='tar -cvf' # to compress files: t file-$(date +%F).tar 
-alias tsee='tar -tvf'
 alias x='exit'
 alias cls='clear'
 alias ..='cd ..'
@@ -19,7 +21,6 @@ alias sbash='source ~/.bashrc'
 alias evim='vim ~/.vimrc'
 alias svim='source ~/.vimrc'
 alias myip="curl http://ipecho.net/plain; echo"
-alias systeminfo='/usr/sbin/system_profiler SPHardwareDataType'
 
 # Directories shortcuts
 alias docs='cd ~/Documents;ls -l'
@@ -30,7 +31,6 @@ alias vids='cd ~/Videos;ls -l'
 # Git
 alias gs="git status"
 alias ga="git add ."
-alias gp="git push -u origin master"
 
 # Use human-readable filesizes
 alias du="du -h"
@@ -76,8 +76,6 @@ alias vs='cd ~/Homestead && vagrant ssh && cd -'
 #											   #
 ################################################
 
-# Greeting, motd etc...
-#-------------------------------------------------------------
 # Define some colors first:
 LIGHTGRAY='\e[0;37m'
 LIGHTBLUE='\e[1;34m'
@@ -94,3 +92,31 @@ NC='\e[0m'              # No Color
 PS1="$RED[ $LIGHTCYAN\u$LIGHTBLUE @ $LIGHTGREEN\h $RED]  $LIGHTGREEN=>  $LIGHTBLUE\w $LIGHTGREEN \n > $NORMAL "
 
 
+#############################################
+#  ___  _ _  _  _  __  ___  _  _  _  _  __  #
+# | __|| | || \| |/ _||_ _|| |/ \| \| |/ _| #
+# | _| | U || \\ ( (_  | | | ( o ) \\ |\_ \ #
+# |_|  |___||_|\_|\__| |_| |_|\_/|_|\_||__/ #
+#                                           # 
+#############################################
+
+# Extract compressed files,  use:  zipfile.zip
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2|*.tbz2) tar xjf $1   ;;
+      *.tar.gz|*.tgz)   tar xzf $1   ;;
+      *.bz2)            bunzip2 $1   ;;
+      *.rar)            unrar x $1     ;;
+      *.gz)             gunzip $1    ;;
+      *.tar)            tar xf $1    ;;
+      *.zip)            unzip $1     ;;
+      *.Z)              uncompress $1;;
+      *.7z)             7z x $1      ;;
+      *)                echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}

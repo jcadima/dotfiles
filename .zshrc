@@ -1,3 +1,9 @@
+#      _  ____ 
+#     | |/ ___|		
+#  _  | | |    		Juan J Cadima
+# | |_| | |___ 		https://github.com/jcadima
+#  \___/ \____|	
+
 ############################################
 #  ___  __  _ _    __ _  _  _  ___  _  __  #
 # |_ / / _|| U |  / _/ \| \| || __|| |/ _| #
@@ -6,20 +12,10 @@
 #										   #
 ############################################
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH=$HOME/.oh-my-zsh
 
-# Path to your oh-my-zsh installation.
-#  export ZSH=/home/user/.oh-my-zsh
-  export ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
-
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh virtualenv os_icon dir vcs time status)
 
@@ -50,7 +46,6 @@ plugins=(
   git
 )
 
-source $ZSH/oh-my-zsh.sh
 
 ###################################
 #   _   _    _   _   __  ___  __  #
@@ -62,22 +57,20 @@ source $ZSH/oh-my-zsh.sh
 alias cls="clear"
 alias x="exit"
 alias ..="cd .."
-alias ehost='sudo -S subl /etc/hosts'
-alias eyaml='subl ~/Homestead/Homestead.yaml' # assumes sublime text is installed
-alias ezsh='subl ~/.zshrc'
+alias ehost='sudo vim /etc/hosts'
+alias eyaml='vim ~/Homestead/Homestead.yaml'
+alias ezsh='vim ~/.zshrc'
 alias www='cd ~/www;ls -l'
 alias szsh='source ~/.zshrc'
 alias docs='cd ~/Documents;ls -l'
 alias downs='cd ~/Downloads;ls -l'
 alias pics='cd ~/Pictures;ls -l'
 alias vids='cd ~/Videos;ls -l'
-alias checktemp='sudo tlp-stat | grep -i "CPU temp"' # grep CPU temp with TLP
 alias myip="curl http://ipecho.net/plain; echo"
 
 # Git
 alias gs="git status"
 alias ga="git add ."
-alias pushgit="git push -u origin master"
 
 # Human readable filesize
 alias du="du -h"
@@ -89,3 +82,36 @@ alias vh='cd ~/Homestead && vagrant halt && cd -'
 alias vp='cd ~/Homestead && vagrant provision && cd -'
 alias vr='cd ~/Homestead && vagrant reload && cd -'
 alias vs='cd ~/Homestead && vagrant ssh && cd -'
+
+
+#############################################
+#  ___  _ _  _  _  __  ___  _  _  _  _  __  #
+# | __|| | || \| |/ _||_ _|| |/ \| \| |/ _| #
+# | _| | U || \\ ( (_  | | | ( o ) \\ |\_ \ #
+# |_|  |___||_|\_|\__| |_| |_|\_/|_|\_||__/ #
+#                                           # 
+#############################################
+
+# Extract compressed files,  use:  zipfile.zip
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2|*.tbz2) tar xjf $1   ;;
+      *.tar.gz|*.tgz)   tar xzf $1   ;;
+      *.bz2)            bunzip2 $1   ;;
+      *.rar)            unrar x $1     ;;
+      *.gz)             gunzip $1    ;;
+      *.tar)            tar xf $1    ;;
+      *.zip)            unzip $1     ;;
+      *.Z)              uncompress $1;;
+      *.7z)             7z x $1      ;;
+      *)                echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+
+source $ZSH/oh-my-zsh.sh
