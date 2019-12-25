@@ -60,12 +60,12 @@ alias ..="cd .."
 alias ehost='sudo vim /etc/hosts'
 alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias ezsh='vim ~/.zshrc'
-alias www='cd ~/www;ls -l'
+alias www='cd ~/www'
 alias szsh='source ~/.zshrc'
-alias docs='cd ~/Documents;ls -l'
-alias downs='cd ~/Downloads;ls -l'
-alias pics='cd ~/Pictures;ls -l'
-alias vids='cd ~/Videos;ls -l'
+alias docs='cd ~/Documents'
+alias downs='cd ~/Downloads'
+alias pics='cd ~/Pictures'
+alias vids='cd ~/Videos'
 alias myip="curl http://ipecho.net/plain; echo"
 
 # Git
@@ -111,6 +111,11 @@ ex ()
   else
     echo "'$1' is not a valid file"
   fi
+}
+
+# list directory after directory change
+function cd {
+    builtin cd "$@" && ls -l
 }
 
 
