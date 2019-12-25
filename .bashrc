@@ -10,7 +10,7 @@
 #  / \ | |  | | / \ / _|| __|/ _| #
 # | o || |_ | || o |\_ \| _| \_ \ #
 # |_n_||___||_||_n_||__/|___||__/ #
-#								  #
+#								                  #
 ###################################
 alias x='exit'
 alias cls='clear'
@@ -23,10 +23,10 @@ alias svim='source ~/.vimrc'
 alias myip="curl http://ipecho.net/plain; echo"
 
 # Directories shortcuts
-alias docs='cd ~/Documents'
-alias downs='cd ~/Downloads'
-alias pics='cd ~/Pictures'
-alias vids='cd ~/Videos'
+alias docs='cd ~/Documents; ls -l'
+alias downs='cd ~/Downloads; ls -l'
+alias pics='cd ~/Pictures; ls -l'
+alias vids='cd ~/Videos; ls -l'
 
 # Git
 alias gs="git status"
@@ -73,7 +73,7 @@ alias vs='cd ~/Homestead && vagrant ssh && cd -'
 # |_ _|| U || __| | o \ o \/ \| \_/ || o \_ _| #
 #  | | |   || _|  |  _/   ( o ) \_/ ||  _/| |  #
 #  |_| |_n_||___| |_| |_|\\\_/|_| |_||_|  |_|  #
-#											   #
+#											                         #
 ################################################
 
 # Define some colors first:
@@ -121,7 +121,14 @@ ex ()
   fi
 }
 
-# list directory after directory change
-function cd {
+# list directory contents after directory change, 
+# using "to" as function name to avoid collision with vagrant aliases section
+# usage:  to directory_name
+function to {
     builtin cd "$@" && ls -l
+}
+
+# git commit message
+function gcomm() {
+    git commit -m $1
 }

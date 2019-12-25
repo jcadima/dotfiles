@@ -9,7 +9,7 @@
 # |_ / / _|| U |  / _/ \| \| || __|| |/ _| #
 #  /(_ \_ \|   | ( (( o ) \\ || _| | ( |_n #
 # /___||__/|_n_|  \__\_/|_|\_||_|  |_|\__/ #
-#										   #
+#										                       #
 ############################################
 
 export ZSH=$HOME/.oh-my-zsh
@@ -46,13 +46,14 @@ plugins=(
   git
 )
 
+source $ZSH/oh-my-zsh.sh
 
 ###################################
 #   _   _    _   _   __  ___  __  #
 #  / \ | |  | | / \ / _|| __|/ _| #
 # | o || |_ | || o |\_ \| _| \_ \ #
 # |_n_||___||_||_n_||__/|___||__/ #
-#								  #
+#								                  #
 ###################################
 alias cls="clear"
 alias x="exit"
@@ -62,10 +63,10 @@ alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias ezsh='vim ~/.zshrc'
 alias www='cd ~/www'
 alias szsh='source ~/.zshrc'
-alias docs='cd ~/Documents'
-alias downs='cd ~/Downloads'
-alias pics='cd ~/Pictures'
-alias vids='cd ~/Videos'
+alias docs='cd ~/Documents; ls -l'
+alias downs='cd ~/Downloads; ls -l'
+alias pics='cd ~/Pictures; ls -l'
+alias vids='cd ~/Videos; ls -l'
 alias myip="curl http://ipecho.net/plain; echo"
 
 # Git
@@ -113,10 +114,16 @@ ex ()
   fi
 }
 
-# list directory after directory change
-function cd {
+# list directory contents after directory change, 
+# using "to" as function name to avoid collision with vagrant aliases section
+# usage:  to directory_name
+function to {
     builtin cd "$@" && ls -l
 }
 
 
-source $ZSH/oh-my-zsh.sh
+# git commit message
+function gcomm() {
+    git commit -m $1
+}
+

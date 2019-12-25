@@ -19,6 +19,7 @@ set showmatch
 set hlsearch
 set pastetoggle=<leader>z  " avoid typing :set paste and :set nopaste 
 set scrolloff=10          " Keep min of 10 lines above/below cursor.
+set clipboard=unnamedplus  " register + to system clipboard 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
