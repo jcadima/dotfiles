@@ -39,8 +39,14 @@ set t_vb=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
-colorscheme hybrid_material
+
+" If we are running gvim set dark background and theme
+" leave default terminal colors for vim
+if has('gui_running')
+	set background=dark
+    colorscheme hybrid_material
+endif
+
 set guifont=Hack\ 12
 let g:enable_bold_font = 1
 hi LineNr ctermfg=242
