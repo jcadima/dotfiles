@@ -2,7 +2,7 @@
 #     | |/ ___|		
 #  _  | | |    		Juan J Cadima
 # | |_| | |___ 		https://github.com/jcadima
-#  \___/ \____|	
+#  \___/ \____|	  https://jcadima.dev
 
 
 ###################################
@@ -126,9 +126,4 @@ ex ()
 # usage:  to directory_name
 function to() {
     builtin cd "$@" && ls -al
-}
-
-# git commit message
-function gcomm() {
-    git commit -m $1
 }

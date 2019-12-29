@@ -2,7 +2,7 @@
 #     | |/ ___|		
 #  _  | | |    		Juan J Cadima
 # | |_| | |___ 		https://github.com/jcadima
-#  \___/ \____|	
+#  \___/ \____|	  https://jcadima.dev
 
 ############################################
 #  ___  __  _ _    __ _  _  _  ___  _  __  #
@@ -29,7 +29,7 @@ POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=004
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=007
 POWERLEVEL9K_DIR_HOME_BACKGROUND=004
 POWERLEVEL9K_DIR_HOME_FOREGROUND=007
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=004  # other dictories, 004=blue.
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=004
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=007
 POWERLEVEL9K_VIRTUALENV_BACKGROUND=008
 POWERLEVEL9K_VIRTUALENV_FOREGROUND=011
@@ -120,10 +120,3 @@ ex ()
 function to() {
     builtin cd "$@" && ls -al
 }
-
-
-# git commit message
-function gcomm() {
-    git commit -m $1
-}
-

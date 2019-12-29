@@ -14,15 +14,40 @@ syntax enable
 set number
 set ruler
 set shiftwidth=4
+set softtabstop=4
 set tabstop=4
-set cursorline
+set ttyfast					" Enable fast terminal connection
+set cursorline				" highlight current line
 set showmatch
+set autoindent				" Copy indent to the new line
+
+set backspace=indent		" Allow backspace in insert mode
+set backspace+=eol			"_|
+set backspace+=start		"_|
+
 set hlsearch
 set incsearch
-set pastetoggle=<leader>z  " avoid typing :set paste and :set nopaste 
-set scrolloff=10          " Keep min of 10 lines above/below cursor.
-set clipboard=unnamedplus  " register + to system clipboard 
-set noshowmode
+set pastetoggle=<leader>z   " avoid typing :set paste and :set nopaste 
+set scrolloff=10            " Keep min of 10 lines above/below cursor.
+set clipboard=unnamedplus   " register + to system clipboard 
+set noshowmode				" hide mode, using plugin
+
+set visualbell				" disable window flashing/beeping, silence is golden 
+set noerrorbells
+set t_vb=
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+colorscheme hybrid_material
+set guifont=Hack\ 12
+let g:enable_bold_font = 1
+hi LineNr ctermfg=242
+hi CursorLineNr ctermfg=15
+hi VertSplit ctermfg=8 ctermbg=0
+hi Statement ctermfg=3
+
 
 " ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -34,7 +59,7 @@ let g:ctrlp_prompt_mappings = {
     \ }
 
 
-" controP Plugin - Ignore selected dirs/files
+" Ignore selected dirs/files (ctrlp)
 let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
 
 
@@ -55,21 +80,11 @@ augroup autosourcing
 augroup END
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" colorscheme nord
-hi LineNr ctermfg=242
-hi CursorLineNr ctermfg=15
-hi VertSplit ctermfg=8 ctermbg=0
-hi Statement ctermfg=3
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
+" Toggle NERDTree with SHIFT n
+map <S-n> :NERDTreeToggle<CR>
 
 " edit vimrc on a new tab
 nmap <leader>ev :tabedit $MYVIMRC<cr>
@@ -133,18 +148,18 @@ inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
 " Split Management
-set splitbelow
+set splitbelow		" put new split window below and to the right
 set splitright
 
-" Navigate split windows with CTRL-H, CTRL-J, CTRL-K, CTRL-L
-nmap <C-J> <C-W><C-J>
-nmap <C-K> <C-W><C-K>
-nmap <C-H> <C-W><C-H>
-nmap <C-L> <C-W><C-L>
+" Navigate split windows with SHIFT-H, SHIFT-J, SHIFT-K, SHIFT-L
+nmap <S-j> <C-W><C-J>
+nmap <S-k> <C-W><C-K>
+nmap <S-h> <C-W><C-H>
+nmap <S-l> <C-W><C-L>
 
 " Add simple hightlight removal
 nmap <leader><space> :nohlsearch<cr>
 
-" Map previous/next tabs
-nnoremap <C-Left> :tabprevious<cr>
-nnoremap <C-Right> :tabnext<cr>
+" Map previous/next tabs with SHIFT [Left] , SHIFT [Right]
+nnoremap <S-Left> :tabprevious<cr>
+nnoremap <S-Right> :tabnext<cr>
