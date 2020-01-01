@@ -5,6 +5,7 @@
 "  \___/ \____|		https://jcadima.dev
 
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Set Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -35,6 +36,7 @@ set noshowmode				" hide mode, using plugin
 set visualbell				" disable window flashing/beeping, silence is golden 
 set noerrorbells
 set t_vb=
+set laststatus=2			" set status line
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors
@@ -55,6 +57,9 @@ hi VertSplit ctermfg=8 ctermbg=0
 hi Statement ctermfg=3
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin Options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -64,27 +69,28 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>'],
     \ }
 
-
 " Ignore selected dirs/files (ctrlp)
 let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Status Line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set laststatus=2
+" NERDTree plugin, show hidden files by default
+let NERDTreeShowHidden=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Auto-Commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Group autocmd's to prevent duplication everytime vimrc is sourced
+" prevent duplication everytime vimrc is sourced
 augroup autosourcing
 	autocmd!
 	autocmd BufWritePost .vimrc source %
 augroup END
 
+" Fix .yaml files indent issue
+augroup yamlfiles
+	autocmd!
+	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MAPPINGS
@@ -144,8 +150,12 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nmap <leader><space> :nohlsearch<cr>
 
 " remap ESC key
-inoremap fj <Esc>
-cnoremap fj <Esc>
+inoremap kj <Esc>
+cnoremap kj <Esc>
+
+" remap 1/2 up/down:
+nnoremap <C-k> <C-u>
+nnoremap <C-j> <C-d>
 
 " Move lines up/down
 nnoremap <S-Up> :m-2<CR>
