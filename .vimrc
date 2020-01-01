@@ -4,11 +4,10 @@
 " | |_| | |___ 		https://github.com/jcadima
 "  \___/ \____|		https://jcadima.dev
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Set Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
 let mapleader=","  
 set nocompatible    " be iMproved
 syntax enable
@@ -52,10 +51,10 @@ endif
 set guifont=Hack\ 12
 let g:enable_bold_font = 1
 hi LineNr ctermfg=242
-hi CursorLineNr ctermfg=15
+hi CursorLineNr ctermfg=cyan
 hi VertSplit ctermfg=8 ctermbg=0
 hi Statement ctermfg=3
-
+hi CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=darkgray
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Options
@@ -107,6 +106,9 @@ nnoremap <leader>a gg"+yG
 " remove text from current cursor position to the end of line
 nnoremap rs v$d
 
+" swap the current paragraph with the next
+nnoremap g{ {dap}p{
+
 " copy current line to a new line below and place cursor at the end in insert mode
 nmap clb yypA
  
@@ -154,8 +156,8 @@ inoremap kj <Esc>
 cnoremap kj <Esc>
 
 " remap 1/2 up/down:
-nnoremap <C-k> <C-u>
-nnoremap <C-j> <C-d>
+nnoremap <S-k> <C-u>
+nnoremap <S-j> <C-d>
 
 " Move lines up/down
 nnoremap <S-Up> :m-2<CR>
@@ -167,11 +169,15 @@ inoremap <S-Down> <Esc>:m+<CR>
 set splitbelow		" put new split window below and to the right
 set splitright
 
+" split window horizontally/vertically mappings
+nnoremap ,v <C-w>v
+nnoremap ,h <C-w>s
+
 " Navigate split windows with SHIFT-H, SHIFT-J, SHIFT-K, SHIFT-L
-nmap <S-j> <C-W><C-J>
-nmap <S-k> <C-W><C-K>
-nmap <S-h> <C-W><C-H>
-nmap <S-l> <C-W><C-L>
+nmap sj <C-W><C-J>
+nmap sk <C-W><C-K>
+nmap sh <C-W><C-H>
+nmap sl <C-W><C-L>
 
 " Add simple hightlight removal
 nmap <leader><space> :nohlsearch<cr>
@@ -179,3 +185,4 @@ nmap <leader><space> :nohlsearch<cr>
 " Map previous/next tabs with SHIFT [Left] , SHIFT [Right]
 nnoremap <S-Left> :tabprevious<cr>
 nnoremap <S-Right> :tabnext<cr>
+
