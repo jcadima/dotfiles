@@ -8,7 +8,7 @@
 " => Set Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
-let mapleader=","  
+let mapleader=","
 set nocompatible    " be iMproved
 syntax enable
 set number
@@ -27,12 +27,12 @@ set backspace+=start		"_|
 
 set hlsearch
 set incsearch
-set pastetoggle=<leader>z   " avoid typing :set paste and :set nopaste 
+set pastetoggle=<leader>z   " avoid typing :set paste and :set nopaste
 set scrolloff=10            " Keep min of 10 lines above/below cursor.
-set clipboard=unnamedplus   " register + to system clipboard 
+set clipboard=unnamedplus   " register + to system clipboard
 set noshowmode				" hide mode, using plugin
 
-set visualbell				" disable window flashing/beeping, silence is golden 
+set visualbell				" disable window flashing/beeping, silence is golden
 set noerrorbells
 set t_vb=
 set laststatus=2			" set status line
@@ -111,17 +111,17 @@ nnoremap g{ {dap}p{
 
 " copy current line to a new line below and place cursor at the end in insert mode
 nmap clb yypA
- 
+
 " copy current line to a new line above  and place cursor at the end in insert mode
 nmap cla yyPA
- 
+
 " Clone whole paragraph below
-nmap cpa yap<S-{>p 
+nmap cpa yap<S-{>p
 
 " Clone whole paragraph above
-nmap cpb yap<S-}>p 
+nmap cpb yap<S-}>p
 
-" Save and quit with ,x 
+" Save and quit with ,x
 noremap <leader>x :x<cr>
 
 " Save and Quit with ,x in Insert Mode
@@ -185,4 +185,3 @@ nmap <leader><space> :nohlsearch<cr>
 " Map previous/next tabs with SHIFT [Left] , SHIFT [Right]
 nnoremap <S-Left> :tabprevious<cr>
 nnoremap <S-Right> :tabnext<cr>
-
