@@ -3,6 +3,9 @@
 "  _  | | |    		Juan J Cadima
 " | |_| | |___ 		https://github.com/jcadima
 "  \___/ \____|		https://jcadima.dev
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Set Options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Set Options
@@ -156,8 +159,8 @@ inoremap kj <Esc>
 cnoremap kj <Esc>
 
 " remap 1/2 up/down:
-nnoremap <S-k> <C-u>
-nnoremap <S-j> <C-d>
+nnoremap <C-k> <C-u>
+nnoremap <C-j> <C-d>
 
 " Move lines up/down
 nnoremap <S-Up> :m-2<CR>
@@ -174,10 +177,17 @@ nnoremap ,v <C-w>v
 nnoremap ,h <C-w>s
 
 " Navigate split windows with SHIFT-H, SHIFT-J, SHIFT-K, SHIFT-L
-nmap sj <C-W><C-J>
-nmap sk <C-W><C-K>
-nmap sh <C-W><C-H>
-nmap sl <C-W><C-L>
+nmap <S-j> <C-W><C-J>
+nmap <S-k> <C-W><C-K>
+nmap <S-h> <C-W><C-H>
+nmap <S-l> <C-W><C-L>
+
+" Resize split window mappings
+map + <c-w>+
+map - <c-w>-
+map <c-n> <c-w><
+map <c-m> <c-w>>
+map <c-=> <c-W>=  
 
 " Add simple hightlight removal
 nmap <leader><space> :nohlsearch<cr>
@@ -185,3 +195,4 @@ nmap <leader><space> :nohlsearch<cr>
 " Map previous/next tabs with SHIFT [Left] , SHIFT [Right]
 nnoremap <S-Left> :tabprevious<cr>
 nnoremap <S-Right> :tabnext<cr>
+
