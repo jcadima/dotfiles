@@ -6,39 +6,55 @@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => PLUGINS - VUNDLE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set the runtime path to include Vundle and initialize
+set nocompatible 
+filetype off
+syntax enable
+let mapleader=","
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'preservim/nerdtree'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'itchyny/lightline.vim'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Set Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
-let mapleader=","
-set nocompatible	" be iMproved
-syntax enable
 set number
 set ruler
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set ttyfast			" Enable fast terminal connection
-set cursorline		" highlight current line
+set ttyfast         " Enable fast terminal connection
+set cursorline      " highlight current line
 set showmatch
-set autoindent		" Copy indent to the new line
-
-set backspace=indent		" Allow backspace in insert mode
-set backspace+=eol			"_|
-set backspace+=start		"_|
-
+set autoindent      " Copy indent to the new line
+set backspace=indent        " Allow backspace in insert mode
+set backspace+=eol          "_|
+set backspace+=start        "_|
 set hlsearch
 set incsearch
 set pastetoggle=<leader>z   " avoid typing :set paste and :set nopaste
 set scrolloff=10            " Keep min of 10 lines above/below cursor.
 set clipboard=unnamedplus   " register + to system clipboard
-set noshowmode				" hide mode, using plugin
-
-set visualbell				" disable window flashing/beeping, silence is golden
+set noshowmode              " hide mode, using plugin
+set visualbell              " disable window flashing/beeping, silence is golden
 set noerrorbells
 set t_vb=
-set laststatus=2			" set status line
+set laststatus=2            " set status line
 " set window split separator background same as bg (for Gvim):
 hi vertsplit guifg=bg guibg=bg  
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,7 +64,7 @@ hi vertsplit guifg=bg guibg=bg
 " If we are running gvim set dark background and theme
 " leave default terminal colors for vim
 if has('gui_running')
-	set background=dark
+    set background=dark
     colorscheme hybrid_material
 endif
 
@@ -58,25 +74,15 @@ hi LineNr ctermfg=242
 hi CursorLineNr ctermfg=cyan
 hi VertSplit ctermfg=8 ctermbg=0
 hi Statement ctermfg=3
-hi CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=darkgrey
+hi CursorLine term=bold cterm=bold 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERDTree Plugin Notes
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" - Vim 8+ packages
-" - Using Vim v8.0 built-in package management; see :help packages for more information
-" - NERDTree (~/.vim/pack/vendor/start/nerdtree)
+" => Plugin 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " NERDTree plugin, show hidden files by default
 let NERDTreeShowHidden=1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => CTRL Plugin Notes
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" - Install Location: ~/.vim/bundle/ctrlp.vim (Unix/Linux)
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " open new files in tabs 
 let g:ctrlp_prompt_mappings = {
@@ -94,15 +100,16 @@ let g:ctrlp_custom_ignore = 'vendor\node_modules\DS_Store\|git'
 
 " prevent duplication everytime vimrc is sourced
 augroup autosourcing
-	autocmd!
-	autocmd BufWritePost .vimrc source %
+    autocmd!
+    autocmd BufWritePost .vimrc source %
 augroup END
 
 " Fix .yaml files indent
 augroup yamlfiles
-	autocmd!
-	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd!
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MAPPINGS
