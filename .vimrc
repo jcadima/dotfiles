@@ -3,26 +3,24 @@
 "  _  | | |    		Juan J Cadima
 " | |_| | |___ 		https://github.com/jcadima
 "  \___/ \____|		https://jcadima.dev
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Set Options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Set Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
 let mapleader=","
-set nocompatible    " be iMproved
+set nocompatible	" be iMproved
 syntax enable
 set number
 set ruler
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set ttyfast					" Enable fast terminal connection
-set cursorline				" highlight current line
+set ttyfast			" Enable fast terminal connection
+set cursorline		" highlight current line
 set showmatch
-set autoindent				" Copy indent to the new line
+set autoindent		" Copy indent to the new line
 
 set backspace=indent		" Allow backspace in insert mode
 set backspace+=eol			"_|
@@ -39,6 +37,9 @@ set visualbell				" disable window flashing/beeping, silence is golden
 set noerrorbells
 set t_vb=
 set laststatus=2			" set status line
+" set window split separator background same as bg (for Gvim):
+hi vertsplit guifg=bg guibg=bg  
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors
@@ -57,25 +58,34 @@ hi LineNr ctermfg=242
 hi CursorLineNr ctermfg=cyan
 hi VertSplit ctermfg=8 ctermbg=0
 hi Statement ctermfg=3
-hi CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=darkgray
+hi CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=darkgrey
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin Options
+" => NERDTree Plugin Notes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctrlp plugin
+" - Vim 8+ packages
+" - Using Vim v8.0 built-in package management; see :help packages for more information
+" - NERDTree (~/.vim/pack/vendor/start/nerdtree)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" NERDTree plugin, show hidden files by default
+let NERDTreeShowHidden=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => CTRL Plugin Notes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" - Install Location: ~/.vim/bundle/ctrlp.vim (Unix/Linux)
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-" open new files in tabs (ctrlp)
+" open new files in tabs 
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
     \ 'AcceptSelection("t")': ['<cr>'],
     \ }
 
-" Ignore selected dirs/files (ctrlp)
-let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
-
-" NERDTree plugin, show hidden files by default
-let NERDTreeShowHidden=1
+" Ignore selected dirs/files
+let g:ctrlp_custom_ignore = 'vendor\node_modules\DS_Store\|git'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -88,7 +98,7 @@ augroup autosourcing
 	autocmd BufWritePost .vimrc source %
 augroup END
 
-" Fix .yaml files indent issue
+" Fix .yaml files indent
 augroup yamlfiles
 	autocmd!
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -155,14 +165,14 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nmap <leader><space> :nohlsearch<cr>
 
 " remap ESC key
-inoremap kj <Esc>
-cnoremap kj <Esc>
+inoremap jj <Esc>
+cnoremap jj <Esc>
 
 " remap 1/2 up/down:
 nnoremap <C-k> <C-u>
 nnoremap <C-j> <C-d>
 
-" Move lines up/down
+" Move lines up/down with SHIFT+UP , SHIFT+DOWN
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
@@ -195,4 +205,3 @@ nmap <leader><space> :nohlsearch<cr>
 " Map previous/next tabs with SHIFT [Left] , SHIFT [Right]
 nnoremap <S-Left> :tabprevious<cr>
 nnoremap <S-Right> :tabnext<cr>
-
