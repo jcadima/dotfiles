@@ -58,6 +58,12 @@ set laststatus=2            " set status line
 hi vertsplit guifg=bg guibg=bg  
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Comment (cc) and Uncomment (cu) code with //
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap   <silent> cc      :s,^\(\s*\)[^// \t]\@=,\1// ,e<CR>:nohls<CR>zvj
+noremap   <silent> cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors
