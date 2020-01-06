@@ -113,10 +113,3 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
-# list directory contents after directory change, 
-# using "to" as function name to avoid collision with vagrant aliases section
-# usage:  to directory_name
-function to() {
-    builtin cd "$@" && ls -al
-}

@@ -3,8 +3,6 @@
 "  _  | | |    		Juan J Cadima
 " | |_| | |___ 		https://github.com/jcadima
 "  \___/ \____|		https://jcadima.dev
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => PLUGINS - VUNDLE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -21,6 +19,10 @@ Plugin 'preservim/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'alvan/vim-closetag'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -74,7 +76,7 @@ hi LineNr ctermfg=242
 hi CursorLineNr ctermfg=cyan
 hi VertSplit ctermfg=8 ctermbg=0
 hi Statement ctermfg=3
-hi CursorLine term=bold cterm=bold 
+hi CursorLine term=bold cterm=bold ctermbg=darkgrey
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,8 +97,55 @@ let g:ctrlp_custom_ignore = 'vendor\node_modules\DS_Store\|git'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => HTML Autocomplete 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" filenames like *.xml, *.html, *.xhtml, .php 
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml,php'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Auto-Commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" toggle cursorline between normal and insert mode
+:autocmd InsertEnter,InsertLeave * set cul!
 
 " prevent duplication everytime vimrc is sourced
 augroup autosourcing
@@ -119,6 +168,9 @@ map <S-n> :NERDTreeToggle<CR>
 
 " edit vimrc on a new tab
 nmap <leader>ev :tabedit $MYVIMRC<cr>
+
+" select the word under cursor and overwrite with buffer content
+nnoremap <S-p> viwp
 
 " copy all contents from beginning to end of file to clipbard buffer
 nnoremap <leader>a gg"+yG

@@ -15,7 +15,7 @@
 alias x='exit'
 alias cls='clear'
 alias ..='cd ..;ls -al'
-alias ...='cd ../..;ls     -al'
+alias ...='cd ../..;ls -al'
 alias ebash='vim ~/.bashrc'
 alias sbash='source ~/.bashrc'
 alias evim='vim ~/.vimrc'
@@ -121,9 +121,3 @@ ex ()
   fi
 }
 
-# list directory contents after directory change, 
-# using "to" as function name to avoid collision with vagrant aliases section
-# usage:  to directory_name
-function to() {
-    builtin cd "$@" && ls -al
-}
