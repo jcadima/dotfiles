@@ -5,6 +5,9 @@
 "  \___/ \____|		https://jcadima.dev
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => PLUGINS - VUNDLE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -26,7 +29,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'ryanoasis/vim-devicons'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,6 +69,15 @@ hi vertsplit guifg=bg guibg=bg
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap   <silent> cc      :s,^\(\s*\)[^// \t]\@=,\1// ,e<CR>:nohls<CR>zvj
 noremap   <silent> cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Return to last edit position when opening files 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,8 +190,8 @@ map <S-n> :NERDTreeToggle<CR>
 " edit vimrc on a new tab
 nmap <leader>ev :tabedit $MYVIMRC<cr>
 
-" select the word under cursor and overwrite with buffer content
-nnoremap <S-p> viwp
+" select the word under cursor and overwrite with last yanked text
+nnoremap <S-p> viw"0p
 
 " copy all contents from beginning to end of file to clipbard buffer
 nnoremap <leader>a gg"+yG
@@ -214,6 +225,9 @@ noremap <leader>q :q!<cr>
 
 " Quit Files with ,q  in insert mode
 inoremap <leader>q <C-c>:q!<cr>
+
+" paste the last yanked line, paste from dd is not affected
+nnoremap <C-v> "0p
 
 " Delete paragraph/block
 nnoremap <leader>dp v}d
@@ -274,4 +288,3 @@ nmap <leader><space> :nohlsearch<cr>
 " Map previous/next tabs with SHIFT [Left] , SHIFT [Right]
 nnoremap <S-Left> :tabprevious<cr>
 nnoremap <S-Right> :tabnext<cr>
-
