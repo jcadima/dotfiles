@@ -4,6 +4,7 @@
 " | |_| | |___ 		https://github.com/jcadima
 "  \___/ \____|		https://jcadima.dev
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " => PLUGINS - VUNDLE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set the runtime path to include Vundle and initialize
@@ -270,3 +271,4 @@ nmap <leader><space> :nohlsearch<cr>
 " Map previous/next tabs with SHIFT [Left] , SHIFT [Right]
 nnoremap <S-Left> :tabprevious<cr>
 nnoremap <S-Right> :tabnext<cr>
+
