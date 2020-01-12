@@ -6,8 +6,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => PLUGINS - VUNDLE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -62,7 +60,9 @@ set t_vb=
 set laststatus=2            " set status line
 " set window split separator background same as bg (for Gvim):
 hi vertsplit guifg=bg guibg=bg  
-
+" Split Management
+set splitbelow		" put new split window below and to the right
+set splitright
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Comment (cc) and Uncomment (cu) code with //
@@ -197,7 +197,7 @@ nnoremap <S-p> viw"0p
 nnoremap <leader>a gg"+yG
 
 " remove text from current cursor position to the end of line
-nnoremap rs v$d
+nnoremap rs v$hd
 
 " swap the current paragraph with the next
 nnoremap g{ {dap}p{
@@ -220,20 +220,21 @@ noremap <leader>x :x<cr>
 " Save and Quit with ,x in Insert Mode
 inoremap <leader>x <C-c>:x<cr>
 
-" Quit Files with ,q
+" Quit without saving ,q
 noremap <leader>q :q!<cr>
 
 " Quit Files with ,q  in insert mode
 inoremap <leader>q <C-c>:q!<cr>
 
-" paste the last yanked line, paste from dd is not affected
-nnoremap <C-v> "0p
+" paste the last yanked line
+nnoremap -0 "0p
 
 " Delete paragraph/block
 nnoremap <leader>dp v}d
 
 " Save files with ,w
 nnoremap <leader>w :w<cr>
+inoremap <leader>x <C-c>:x<cr>
 
 " Save files in insert mode with ,w  <C-c> is CTRL-c which exits insert mode
 inoremap <leader>w <C-c>:w<cr>
@@ -261,21 +262,6 @@ nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
-" Split Management
-set splitbelow		" put new split window below and to the right
-set splitright
-
-" split window horizontally/vertically mappings
-nnoremap ,v <C-w>v
-nnoremap ,h <C-w>s
-
-" Navigate split windows with SHIFT-H, SHIFT-J, SHIFT-K, SHIFT-L
-nmap <S-j> <C-W><C-J>
-nmap <S-k> <C-W><C-K>
-nmap <S-h> <C-W><C-H>
-nmap <S-l> <C-W><C-L>
-
-" Resize split window mappings
 map + <c-w>+
 map - <c-w>-
 map <c-n> <c-w><
@@ -285,6 +271,6 @@ map <c-=> <c-W>=
 " Add simple hightlight removal
 nmap <leader><space> :nohlsearch<cr>
 
-" Map previous/next tabs with SHIFT [Left] , SHIFT [Right]
+" Map tabs 
 nnoremap <S-Left> :tabprevious<cr>
 nnoremap <S-Right> :tabnext<cr>
