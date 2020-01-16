@@ -259,7 +259,7 @@ nmap <leader><space> :nohlsearch<cr>
 inoremap jj <Esc>
 cnoremap jj <Esc>
 
-" remap 1/2 up/down SHIFT-k , SHIT-j
+" remap 1/2 up/down SHIFT-k , SHIFT-j
 nnoremap <S-k> <C-u>
 nnoremap <S-j> <C-d>
 
