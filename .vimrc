@@ -52,7 +52,7 @@ set hlsearch
 set incsearch
 set pastetoggle=<leader>z   " avoid typing :set paste and :set nopaste
 set scrolloff=10            " Keep min of 10 lines above/below cursor.
-set clipboard=unnamedplus   " register + to system clipboard
+set clipboard=unnamed   " register + to system clipboard
 set noshowmode              " hide mode, using plugin
 set visualbell              " disable window flashing/beeping, silence is golden
 set noerrorbells
@@ -89,9 +89,9 @@ autocmd BufReadPost *
 if has('gui_running')
     set background=dark
     colorscheme hybrid_material
+	set guifont=Hack\ 12
 endif
 
-set guifont=Hack\ 12
 let g:enable_bold_font = 1
 hi LineNr ctermfg=242
 hi CursorLineNr ctermfg=cyan
@@ -184,6 +184,13 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" copy to system clipboard
+nnoremap <C-y> "+y
+vnoremap <C-y> "+y
+nnoremap <C-u> "+p
+vnoremap <C-u> "+p
+
+
 " Toggle NERDTree with SHIFT n
 map <S-n> :NERDTreeToggle<CR>
 
@@ -220,11 +227,11 @@ noremap <leader>x :x<cr>
 " Save and Quit with ,x in Insert Mode
 inoremap <leader>x <C-c>:x<cr>
 
-" Quit without saving ,q
-noremap <leader>q :q!<cr>
+" Quit File
+noremap <leader>q :q<cr>
 
 " Quit Files with ,q  in insert mode
-inoremap <leader>q <C-c>:q!<cr>
+inoremap <leader>q <C-c>:q<cr>
 
 " paste the last yanked line
 nnoremap -0 "0p
@@ -252,9 +259,24 @@ nmap <leader><space> :nohlsearch<cr>
 inoremap jj <Esc>
 cnoremap jj <Esc>
 
-" remap 1/2 up/down:
-nnoremap <C-k> <C-u>
-nnoremap <C-j> <C-d>
+" remap 1/2 up/down SHIFT-k , SHIT-j
+nnoremap <S-k> <C-u>
+nnoremap <S-j> <C-d>
+
+" remap start end of line SHIFT-H, SHIFT-L
+nnoremap <S-h> ^
+nnoremap <S-l> $
+
+" Navigate split windows with Up, Down, Left, Right Keys
+nmap <Down> <C-W><C-J>
+nmap <Up> <C-W><C-K>
+nmap <Left> <C-W><C-H>
+nmap <Right> <C-W><C-L>
+
+
+" split window horizontally/vertically mappings
+nnoremap ,v <C-w>v
+nnoremap ,h <C-w>s
 
 " Move lines up/down with SHIFT+UP , SHIFT+DOWN
 nnoremap <S-Up> :m-2<CR>
@@ -262,6 +284,7 @@ nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
+" Resize split windows
 map + <c-w>+
 map - <c-w>-
 map <c-n> <c-w><
@@ -271,6 +294,8 @@ map <c-=> <c-W>=
 " Add simple hightlight removal
 nmap <leader><space> :nohlsearch<cr>
 
-" Map tabs 
+" Map tabs SHIFT-LEFT, SHIFT-RIGHT
 nnoremap <S-Left> :tabprevious<cr>
 nnoremap <S-Right> :tabnext<cr>
+
+

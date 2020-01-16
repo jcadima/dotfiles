@@ -1,16 +1,48 @@
 snippet a
 	<a href="${1}">${2}</a>${3}
 
+
 snippet form
-	<form action="${1}" method="${2:post}">
-		${0}
+	<form action="${0}" method="${1:post}">
+		${3}
 	</form>
+
+
+snippet div
+	<div class="${1:name}">
+		${2}
+	</div>
+
+
+snippet divi
+	<div id="${1:name}">${2}</div>
+	
+
+snippet textarea
+	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
+
+
+snippet input
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}">
+
+
+snippet select
+	<select name="${1:some_name}" id="${2:$1}">
+	<option value="${3:option}">${4:$3}</option>
+	</select>${5}
+
+
+snippet mailto
+	<a href="mailto:${1}">${2}</a>
+
 
 snippet li
 	<li>${0}</li>
 
+
 snippet lia
 	<li><a href="${0:#}">${1}</a></li>
+
 
 snippet html5
 	<!DOCTYPE html>
@@ -31,8 +63,14 @@ snippet html5
 	  </body>
 	</html>
 
+
 snippet ulli
 	<ul ${1}>
 		<li>${2}</li>
 	</ul>
 
+
+snippet ul
+	<ul ${1}>
+		${2}
+	</ul>
