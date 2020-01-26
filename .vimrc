@@ -5,7 +5,6 @@
 "  \___/ \____|		https://jcadima.dev
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => PLUGINS - VUNDLE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -26,6 +25,8 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -45,10 +46,13 @@ set cursorline      " highlight current line
 set showmatch
 set autoindent      " Copy indent to the new line
 set backspace=indent        " Allow backspace in insert mode
-set backspace+=eol          "_|
-set backspace+=start        "_|
+set backspace+=eol          "
+set backspace+=start        "
 set hlsearch
 set incsearch
+set noswapfile		" disable creating of *.swp files
+set foldmethod=manual	" use manual folding
+set showcmd			" always show current command
 set pastetoggle=<leader>z   " avoid typing :set paste and :set nopaste
 set scrolloff=10            " Keep min of 10 lines above/below cursor.
 set clipboard=unnamed   " register + to system clipboard
@@ -63,11 +67,29 @@ hi vertsplit guifg=bg guibg=bg
 set splitbelow		" put new split window below and to the right
 set splitright
 
+" Center search results
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Comment (cc) and Uncomment (cu) code with //
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap   <silent> cc      :s,^\(\s*\)[^// \t]\@=,\1// ,e<CR>:nohls<CR>zvj
 noremap   <silent> cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => FZF 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap   <space>f	:FZF -m<cr>
+
+" Show open Buffers 
+nnoremap <space>b	:Buffers<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -238,8 +260,10 @@ nnoremap -0 "0p
 " Delete paragraph/block
 nnoremap <leader>dp v}d
 
-" Save files with ,w
+" Save file 
 nnoremap <leader>w :w<cr>
+
+" Save and exit
 inoremap <leader>x <C-c>:x<cr>
 
 " Save files in insert mode with ,w  <C-c> is CTRL-c which exits insert mode
@@ -267,10 +291,10 @@ nnoremap <S-h> ^
 nnoremap <S-l> $
 
 " Navigate split windows with Up, Down, Left, Right Keys
-nmap <Down> <C-W><C-J>
-nmap <Up> <C-W><C-K>
-nmap <Left> <C-W><C-H>
-nmap <Right> <C-W><C-L>
+nmap <space>j  <C-W><C-J>
+nmap <space>k  <C-W><C-K>
+nmap <space>h  <C-W><C-H>
+nmap <space>l <C-W><C-L>
 
 
 " split window horizontally/vertically mappings
@@ -293,8 +317,8 @@ map <c-=> <c-W>=
 " Add simple hightlight removal
 nmap <leader><space> :nohlsearch<cr>
 
-" Map tabs SHIFT-LEFT, SHIFT-RIGHT
-nnoremap <S-Left> :tabprevious<cr>
-nnoremap <S-Right> :tabnext<cr>
+" Map tabs 
+nnoremap 9 :tabprevious<cr>
+nnoremap 0 :tabnext<cr>
 
 
