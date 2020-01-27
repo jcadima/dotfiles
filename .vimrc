@@ -86,11 +86,17 @@ noremap   <silent> cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FZF 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Open FZF
 noremap   <space>f	:FZF -m<cr>
 
 " Show open Buffers 
 nnoremap <space>b	:Buffers<cr>
 
+" SHOW Laravel Controllers
+nnoremap <silent> <leader>fc :Files app/Http/Controllers<cr>
+
+" SHOW Laravel Views
+nnoremap <silent> <leader>fv :Files resources/views<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Return to last edit position when opening files 
@@ -99,6 +105,15 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Show Absolute Path for lightline plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,7 +137,7 @@ hi CursorLine term=bold cterm=bold ctermbg=darkgrey
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin 
+" => NERDTree 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " NERDTree plugin, show hidden files by default
