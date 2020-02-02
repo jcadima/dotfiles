@@ -20,6 +20,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'itchyny/lightline.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'alvan/vim-closetag'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -56,11 +57,12 @@ set showcmd			" always show current command
 set pastetoggle=<leader>z   " avoid typing :set paste and :set nopaste
 set scrolloff=10            " Keep min of 10 lines above/below cursor.
 set clipboard=unnamed   " register + to system clipboard
-set noshowmode              " hide mode, using plugin
+set noshowmode              " hide mode, using lightline
+set laststatus=2            " set status line
 set visualbell              " disable window flashing/beeping, silence is golden
 set noerrorbells
 set t_vb=
-set laststatus=2            " set status line
+
 " set window split separator background same as bg (for Gvim):
 hi vertsplit guifg=bg guibg=bg  
 " Split Management
@@ -86,6 +88,7 @@ noremap   <silent> cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FZF 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Open FZF
 noremap   <space>f	:FZF -m<cr>
 
@@ -107,13 +110,75 @@ autocmd BufReadPost *
      \ endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Show Absolute Path for lightline plugin
+" => Lightline Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Add export FZF_DEFAULT_COMMAND='git ls-files' to your .zshrc or .bashrc to
+" make fzf ignore list of files and directories found in your .gitignore
+
 let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'absolutepath' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'LightLineModified',
+      \   'readonly': 'LightLineReadonly',
+      \   'fugitive': 'LightLineFugitive',
+      \   'filename': 'LightLineFilename',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode': 'LightLineMode',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
-      \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Lightline Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! LightLineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'vimfiler\|gundo' && &readonly ? '' : ''
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? ' '.branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -305,7 +370,7 @@ nnoremap <S-j> <C-d>
 nnoremap <S-h> ^
 nnoremap <S-l> $
 
-" Navigate split windows with Up, Down, Left, Right Keys
+" Navigate split windows with ,Up, ,Down, ,Left, ,Right 
 nmap <space>j  <C-W><C-J>
 nmap <space>k  <C-W><C-K>
 nmap <space>h  <C-W><C-H>
@@ -322,12 +387,6 @@ nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
-" Resize split windows
-map + <c-w>+
-map - <c-w>-
-map <c-n> <c-w><
-map <c-m> <c-w>>
-map <c-=> <c-W>=  
 
 " Add simple hightlight removal
 nmap <leader><space> :nohlsearch<cr>
