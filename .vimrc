@@ -370,7 +370,7 @@ nnoremap <S-j> <C-d>
 nnoremap <S-h> ^
 nnoremap <S-l> $
 
-" Navigate split windows with ,Up, ,Down, ,Left, ,Right 
+" Navigate split windows
 nmap <space>j  <C-W><C-J>
 nmap <space>k  <C-W><C-K>
 nmap <space>h  <C-W><C-H>
@@ -388,7 +388,7 @@ inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
 
-" Add simple hightlight removal
+" remove search highlight with ,<space> 
 nmap <leader><space> :nohlsearch<cr>
 
 " Map tabs 
