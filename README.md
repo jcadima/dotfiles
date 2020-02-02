@@ -18,5 +18,5 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ![alt tag](https://i.imgur.com/uxY0ZQh.png)
 
-![alt tag](https://i.imgur.com/bei1ds1.jpg)
+![alt tag](https://i.imgur.com/WI9ihLc.jpg)
 
