@@ -81,8 +81,8 @@ nmap g# g#zz
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Comment (cc) and Uncomment (cu) code with //
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap   <silent> cc      :s,^\(\s*\)[^// \t]\@=,\1// ,e<CR>:nohls<CR>zvj
-noremap   <silent> cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
+noremap   <leader>cc      :s,^\(\s*\)[^// \t]\@=,\1// ,e<CR>:nohls<CR>zvj
+noremap   <leader>cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -198,7 +198,7 @@ hi LineNr ctermfg=242
 hi CursorLineNr ctermfg=cyan
 hi VertSplit ctermfg=8 ctermbg=0
 hi Statement ctermfg=3
-hi CursorLine term=bold cterm=bold ctermbg=darkgrey
+" hi CursorLine term=bold cterm=bold ctermbg=darkgrey
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
