@@ -19,6 +19,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'mileszs/ack.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'alvan/vim-closetag'
@@ -26,8 +28,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -63,11 +63,33 @@ set visualbell              " disable window flashing/beeping, silence is golden
 set noerrorbells
 set t_vb=
 
+
 " set window split separator background same as bg (for Gvim):
 hi vertsplit guifg=bg guibg=bg  
 " Split Management
 set splitbelow		" put new split window below and to the right
 set splitright
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => CTRLP MAPPINGS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor
+
+" CTRLP Search files
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>fc :CtrlP app/Http/Controllers<cr>
+nnoremap <leader>fv :CtrlP resources/views<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+" Show hidden files in results
+let g:ctrlp_show_hidden = 1
+
+" uncomment lines below to open new files in tabs
+"let g:ctrlp_prompt_mappings = {
+"    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+"    \ 'AcceptSelection("t")': ['<cr>'],
+"    \ }
+
 
 " Center search results
 nmap n nzz
@@ -83,23 +105,6 @@ nmap g# g#zz
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap   <leader>cc      :s,^\(\s*\)[^// \t]\@=,\1// ,e<CR>:nohls<CR>zvj
 noremap   <leader>cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => FZF 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Open FZF
-noremap   <space>f	:FZF -m<cr>
-
-" Show open Buffers 
-nnoremap <space>b	:Buffers<cr>
-
-" SHOW Laravel Controllers
-nnoremap <silent> <leader>fc :Files app/Http/Controllers<cr>
-
-" SHOW Laravel Views
-nnoremap <silent> <leader>fv :Files resources/views<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Return to last edit position when opening files 
@@ -207,15 +212,6 @@ hi Statement ctermfg=3
 
 " NERDTree plugin, show hidden files by default
 let NERDTreeShowHidden=1
-
-" open new files in tabs 
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-    \ 'AcceptSelection("t")': ['<cr>'],
-    \ }
-
-" Ignore selected dirs/files
-let g:ctrlp_custom_ignore = 'vendor\node_modules\DS_Store\|git'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
