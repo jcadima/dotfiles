@@ -17,9 +17,8 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh virtualenv os_icon dir vcs time status)
-
-POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context ssh virtualenv os_icon dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator history time)
 
 POWERLEVEL9K_OS_ICON_FOREGROUND=000
 POWERLEVEL9K_OS_ICON_BACKGROUND=002
@@ -68,6 +67,7 @@ alias downs='cd ~/Downloads; ls -al'
 alias pics='cd ~/Pictures; ls -al'
 alias vids='cd ~/Videos; ls -al'
 alias myip="curl http://ipecho.net/plain; echo"
+alias www='cd ~/www;ls -l'
 
 # Git
 alias gs="git status"
