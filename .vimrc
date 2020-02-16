@@ -84,6 +84,11 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 " Show hidden files in results
 let g:ctrlp_show_hidden = 1
 
+
+" <c-v> Open in Vertical Split
+" <c-x> Open in Horizontal Split
+" <c-t> Open in new tab
+
 " uncomment lines below to open new files in tabs
 "let g:ctrlp_prompt_mappings = {
 "    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
@@ -98,6 +103,18 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => FOLDING
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('folding')
+  if has('windows')
+    let &fillchars='vert: '         
+  endif
+  set foldmethod=indent               
+  set foldlevelstart=99              
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
