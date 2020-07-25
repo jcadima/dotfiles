@@ -19,10 +19,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'mileszs/ack.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'itchyny/lightline.vim'
-Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -63,7 +62,6 @@ set visualbell              " disable window flashing/beeping, silence is golden
 set noerrorbells
 set t_vb=
 
-
 " set window split separator background same as bg (for Gvim):
 hi vertsplit guifg=bg guibg=bg  
 " Split Management
@@ -71,29 +69,9 @@ set splitbelow		" put new split window below and to the right
 set splitright
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => CTRLP MAPPINGS
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor
-
-" CTRLP Search files
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>fc :CtrlP app/Http/Controllers<cr>
-nnoremap <leader>fv :CtrlP resources/views<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-" Show hidden files in results
-let g:ctrlp_show_hidden = 1
-
-
 " <c-v> Open in Vertical Split
 " <c-x> Open in Horizontal Split
 " <c-t> Open in new tab
-
-" uncomment lines below to open new files in tabs
-"let g:ctrlp_prompt_mappings = {
-"    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-"    \ 'AcceptSelection("t")': ['<cr>'],
-"    \ }
 
 
 " Center search results
@@ -117,11 +95,6 @@ if has('folding')
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Comment (cc) and Uncomment (cu) code with //
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap   <leader>cc      :s,^\(\s*\)[^// \t]\@=,\1// ,e<CR>:nohls<CR>zvj
-noremap   <leader>cu      :s,^\(\s*\)// \s\@!,\1,e<CR>:nohls<CR>zvj
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Return to last edit position when opening files 
@@ -211,7 +184,8 @@ endfunction
 " leave default terminal colors for vim
 if has('gui_running')
     set background=dark
-    colorscheme hybrid_material
+    " colorscheme hybrid_material
+    colorscheme darcula
 	set guifont=Hack\ 12
 endif
 
@@ -220,7 +194,7 @@ hi LineNr ctermfg=242
 hi CursorLineNr ctermfg=cyan
 hi VertSplit ctermfg=8 ctermbg=0
 hi Statement ctermfg=3
-" hi CursorLine term=bold cterm=bold ctermbg=darkgrey
+hi CursorLine term=bold cterm=bold ctermbg=238
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -276,6 +250,7 @@ let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
 
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Auto-Commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -304,6 +279,10 @@ vnoremap <C-y> "+y
 nnoremap <C-u> "+p
 vnoremap <C-u> "+p
 
+" FZF Mappings
+nnoremap <leader><leader> :Files<CR>
+nnoremap <leader>b     :Buffers<CR>
+nnoremap <leader>m        :History<CR>
 
 " Toggle NERDTree with SHIFT n
 map <S-n> :NERDTreeToggle<CR>
@@ -311,29 +290,6 @@ map <S-n> :NERDTreeToggle<CR>
 " edit vimrc on a new tab
 nmap <leader>ev :tabedit $MYVIMRC<cr>
 
-" select the word under cursor and overwrite with last yanked text
-nnoremap <S-p> viw"0p
-
-" copy all contents from beginning to end of file to clipbard buffer
-nnoremap <leader>a gg"+yG
-
-" remove text from current cursor position to the end of line
-nnoremap rs v$hd
-
-" swap the current paragraph with the next
-nnoremap g{ {dap}p{
-
-" copy current line to a new line below and place cursor at the end in insert mode
-nmap clb yypA
-
-" copy current line to a new line above  and place cursor at the end in insert mode
-nmap cla yyPA
-
-" Clone whole paragraph below
-nmap cpa yap<S-{>p
-
-" Clone whole paragraph above
-nmap cpb yap<S-}>p
 
 " Save and quit with ,x
 noremap <leader>x :x<cr>
@@ -347,11 +303,6 @@ noremap <leader>q :q<cr>
 " Quit Files with ,q  in insert mode
 inoremap <leader>q <C-c>:q<cr>
 
-" paste the last yanked line
-nnoremap -0 "0p
-
-" Delete paragraph/block
-nnoremap <leader>dp v}d
 
 " Save file 
 nnoremap <leader>w :w<cr>
@@ -368,8 +319,6 @@ nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 "surround word in single quotes
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 
-" remove highlights after searches
-nmap <leader><space> :nohlsearch<cr>
 
 " remap ESC key
 inoremap jj <Esc>
@@ -400,9 +349,6 @@ nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
-
-" remove search highlight with ,<space> 
-nmap <leader><space> :nohlsearch<cr>
 
 " Map tabs 
 nnoremap 9 :tabprevious<cr>
