@@ -1,24 +1,22 @@
-#      _  ____ 
-#     | |/ ___|		
-#  _  | | |    		Juan J Cadima
-# | |_| | |___ 		https://github.com/jcadima
-#  \___/ \____|	  https://jcadima.dev
+#	Juan J Cadima
+# 	https://github.com/jcadima
+#   https://jcadima.dev
 
+######################################
+#    _   _    ___   _   ___ ___ ___  #
+#   /_\ | |  |_ _| /_\ / __| __/ __| #
+#  / _ \| |__ | | / _ \\__ \ _|\__ \ #
+# /_/ \_\____|___/_/ \_\___/___|___/ #
+######################################                                   
 
-###################################
-#   _   _    _   _   __  ___  __  #
-#  / \ | |  | | / \ / _|| __|/ _| #
-# | o || |_ | || o |\_ \| _| \_ \ #
-# |_n_||___||_||_n_||__/|___||__/ #
-#				                  #
-###################################
 alias x='exit'
-alias cls='clear'
+alias cls='clear' # or just use CTRL+L  ¯\_(ツ)_/¯
 alias ..='cd ..;ls -al'
 alias ...='cd ../..;ls -al'
 alias ebash='vim ~/.bashrc'
 alias sbash='source ~/.bashrc'
 alias evim='vim ~/.vimrc'
+alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias svim='source ~/.vimrc'
 alias myip="curl http://ipecho.net/plain; echo"
 
@@ -31,6 +29,7 @@ alias vids='cd ~/Videos; ls -al'
 # Git
 alias gs="git status"
 alias ga="git add ."
+alias gp="git push -u origin master"
 
 # Use human-readable filesizes
 alias du="du -h"
@@ -39,10 +38,8 @@ alias df="df -h"
 # open hosts with vim
 alias ehost='sudo vim /etc/hosts' 
 
-
 # System
 alias top6='ps aux | sort -rk 3,3 | head -n 6' # top 6 cpu processes
-
 
 #-------------------------------------------------------------
 # The 'ls' family (this assumes you use a recent GNU ls)
@@ -59,7 +56,7 @@ alias ldate='ls -ltr'         # sort by date, most recent last
 alias lmore='ls -al |more'    # pipe through 'more'
 alias lr='ls -lR'          # recursive ls
 alias tree='tree -Csu'     # nice alternative to 'recursive ls'
-
+alias www='cd ~/www;ls -l'
 
 # HOMESTEAD/VAGRANT
 alias vu='cd ~/Homestead && vagrant up && cd -'
@@ -68,14 +65,12 @@ alias vp='cd ~/Homestead && vagrant provision && cd -'
 alias vr='cd ~/Homestead && vagrant reload && cd -'
 alias vs='cd ~/Homestead && vagrant ssh && cd -'
 
-################################################
-#  ___  _ _  ___   ___ ___  _  _   _  ___ ___  #
-# |_ _|| U || __| | o \ o \/ \| \_/ || o \_ _| #
-#  | | |   || _|  |  _/   ( o ) \_/ ||  _/| |  #
-#  |_| |_n_||___| |_| |_|\\\_/|_| |_||_|  |_|  #
-#					                           #
-################################################
-
+#####################################################
+#  _____ _  _ ___   ___ ___  ___  __  __ ___ _____  # 
+# |_   _| || | __| | _ \ _ \/ _ \|  \/  | _ \_   _| #
+#   | | | __ | _|  |  _/   / (_) | |\/| |  _/ | |   #
+#   |_| |_||_|___| |_| |_|_\\___/|_|  |_|_|   |_|   #
+#####################################################
 # Define some colors first:
 LIGHTGRAY='\e[0;37m'
 LIGHTBLUE='\e[1;34m'
@@ -92,32 +87,37 @@ NC='\e[0m'              # No Color
 PS1="$RED[ $LIGHTCYAN\u$LIGHTBLUE @ $LIGHTGREEN\h $RED]  $LIGHTGREEN=>  $LIGHTBLUE\w $LIGHTGREEN \n > $NORMAL "
 
 
-#############################################
-#  ___  _ _  _  _  __  ___  _  _  _  _  __  #
-# | __|| | || \| |/ _||_ _|| |/ \| \| |/ _| #
-# | _| | U || \\ ( (_  | | | ( o ) \\ |\_ \ #
-# |_|  |___||_|\_|\__| |_| |_|\_/|_|\_||__/ #
-#                                           # 
-#############################################
+####################################################
+#   ___ ___ _____   ___ ___  ___  __  __ ___ _____ #
+#  / __|_ _|_   _| | _ \ _ \/ _ \|  \/  | _ \_   _|#
+# | (_ || |  | |   |  _/   / (_) | |\/| |  _/ | |  #
+#  \___|___| |_|   |_| |_|_\\___/|_|  |_|_|   |_|  #
+####################################################
 
-# Extract compressed files,  use:  zipfile.zip
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2|*.tbz2) tar xjf $1   ;;
-      *.tar.gz|*.tgz)   tar xzf $1   ;;
-      *.bz2)            bunzip2 $1   ;;
-      *.rar)            unrar x $1     ;;
-      *.gz)             gunzip $1    ;;
-      *.tar)            tar xf $1    ;;
-      *.zip)            unzip $1     ;;
-      *.Z)              uncompress $1;;
-      *.7z)             7z x $1      ;;
-      *)                echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+# git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source $HOME/.bash-git-prompt/gitprompt.sh
+fi
+
+
+function dbsplit() {
+	~/dbsplitter.AppImage
 }
+
+
+function findpicgps() {
+	exiftool -c '%.6f' -GPSPosition $1
+}
+
+
+
+
+
+function menuhelp() {
+	echo "findpicsgps - enter picture name as argument to find picture gps info if available"
+	echo "dbsplit - Opens mysql file splitter"
+}
+
 
