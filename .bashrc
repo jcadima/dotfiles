@@ -1,6 +1,6 @@
 #	Juan J Cadima
 # 	https://github.com/jcadima
-#   https://jcadima.dev
+#	https://jcadima.dev
 
 ######################################
 #    _   _    ___   _   ___ ___ ___  #
@@ -102,22 +102,24 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
 fi
 
 
+#################################################
+#  ___ _   _ _  _  ___ _____ ___ ___  _  _ ___  #
+# | __| | | | \| |/ __|_   _|_ _/ _ \| \| / __| #
+# | _|| |_| | .` | (__  | |  | | (_) | .` \__ \ #
+# |_|  \___/|_|\_|\___| |_| |___\___/|_|\_|___/ #
+#################################################                                                                                    
+
+# https://philiplb.de/sqldumpsplitter3/
 function dbsplit() {
 	~/dbsplitter.AppImage
 }
 
-
+# sudo apt-get install exiftool
 function findpicgps() {
 	exiftool -c '%.6f' -GPSPosition $1
 }
 
 
 
-
-
-function menuhelp() {
-	echo "findpicsgps - enter picture name as argument to find picture gps info if available"
-	echo "dbsplit - Opens mysql file splitter"
-}
 
 
