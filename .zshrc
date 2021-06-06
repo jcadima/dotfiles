@@ -1,22 +1,15 @@
-#    Juan J Cadima
-#    https://github.com/jcadima
-#    https://jcadima.dev
-
-###############################################
-#  _______ _  _    ___ ___  _  _ ___ ___ ___  #
-# |_  / __| || |  / __/ _ \| \| | __|_ _/ __| #
-#  / /\__ \ __ | | (_| (_) | .` | _| | | (_ | #
-# /___|___/_||_|  \___\___/|_|\_|_| |___\___| #
-###############################################                                            
-
 export ZSH=$HOME/.oh-my-zsh
-
+############################################
+#  ___  __  _ _    __ _  _  _  ___  _  __  #
+# |_ / / _|| U |  / _/ \| \| || __|| |/ _| #
+#  /(_ \_ \|   | ( (( o ) \\ || _| | ( |_n #
+# /___||__/|_n_|  \__\_/|_|\_||_|  |_|\__/ #
+#					   #
+############################################
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context ssh virtualenv os_icon dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator history time)
-
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context ssh virtualenv os_icon dir vcs time status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()  # right prompt empty
 POWERLEVEL9K_OS_ICON_FOREGROUND=000
 POWERLEVEL9K_OS_ICON_BACKGROUND=002
 POWERLEVEL9K_USER_DEFAULT_FOREGROUND=000
@@ -25,7 +18,7 @@ POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=004
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=007
 POWERLEVEL9K_DIR_HOME_BACKGROUND=004
 POWERLEVEL9K_DIR_HOME_FOREGROUND=007
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=004
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=004  # other dictories, 004=blue.
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=007
 POWERLEVEL9K_VIRTUALENV_BACKGROUND=008
 POWERLEVEL9K_VIRTUALENV_FOREGROUND=011
@@ -37,41 +30,61 @@ POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_RAM_ICON=''
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
-
 plugins=(
   git
 )
 
 source $ZSH/oh-my-zsh.sh
 
-######################################
-#    _   _    ___   _   ___ ___ ___  #
-#   /_\ | |  |_ _| /_\ / __| __/ __| #
-#  / _ \| |__ | | / _ \\__ \ _|\__ \ #
-# /_/ \_\____|___/_/ \_\___/___|___/ #
-######################################  
+###################################
+#   _   _    _   _   __  ___  __  #
+#  / \ | |  | | / \ / _|| __|/ _| #
+# | o || |_ | || o |\_ \| _| \_ \ #
+# |_n_||___||_||_n_||__/|___||__/ #
+#			 	  #
+###################################
 alias cls="clear"
 alias x="exit"
-alias ..='cd ..;ls -al'
-alias ...='cd ../..;ls -al'
+alias ..="cd ..;ls -al"
+alias ...="cd ../..;ls -al"
 alias ehost='sudo vim /etc/hosts'
 alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias ezsh='vim ~/.zshrc'
+alias www='cd ~/www;ls -al'
 alias szsh='source ~/.zshrc'
-alias docs='cd ~/Documents; ls -al'
-alias downs='cd ~/Downloads; ls -al'
-alias pics='cd ~/Pictures; ls -al'
-alias vids='cd ~/Videos; ls -al'
+alias docs='cd ~/Documents;ls -al'
+alias downs='cd ~/Downloads;ls -al'
+alias pics='cd ~/Pictures;ls -al'
+alias vids='cd ~/Videos;ls -al'
 alias myip="curl http://ipecho.net/plain; echo"
-alias www='cd ~/www;ls -l'
+alias evim='vim ~/.vimrc'
+alias svim='source ~/.vimrc'
 
 # Git
 alias gs="git status"
-alias ga="git add ."
+alias ga='git add .'
+alias gp="git push -u origin master"
 
 # Human readable filesize
 alias du="du -h"
 alias df="df -h"
+
+# SSD
+alias ssd='ssh -i ~/swcorp-key/jcadima.pem jcadima@35.167.25.58'
+
+# SWCORP
+alias swcorp='ssh -i ~/swcorp-key/jcadima.pem jcadima@52.34.100.251'
+
+
+# Hotvue ssh access
+alias hotvue="ssh -i ~/.hotvue-key/id_rsa armadillo@206.81.1.213"
+
+# Ciwork
+# alias ciwork='ssh ciwork@ciwork.co'
+
+# Cireach
+# alias cireach='ssh ciwebmaster@158.69.193.158'
+
 
 # HOMESTEAD/VAGRANT
 alias vu='cd ~/Homestead && vagrant up && cd -'
@@ -81,19 +94,43 @@ alias vr='cd ~/Homestead && vagrant reload && cd -'
 alias vs='cd ~/Homestead && vagrant ssh && cd -'
 
 
-#################################################
-#  ___ _   _ _  _  ___ _____ ___ ___  _  _ ___  #
-# | __| | | | \| |/ __|_   _|_ _/ _ \| \| / __| #
-# | _|| |_| | .` | (__  | |  | | (_) | .` \__ \ #
-# |_|  \___/|_|\_|\___| |_| |___\___/|_|\_|___/ #
-#################################################   
+#############################################
+#  ___  _ _  _  _  __  ___  _  _  _  _  __  #
+# | __|| | || \| |/ _||_ _|| |/ \| \| |/ _| #
+# | _| | U || \\ ( (_  | | | ( o ) \\ |\_ \ #
+# |_|  |___||_|\_|\__| |_| |_|\_/|_|\_||__/ #
+#                                           # 
+#############################################
 
-# https://philiplb.de/sqldumpsplitter3/
-function dbsplit() {
-  ~/dbsplitter.AppImage
+# Extract compressed files,  use:  zipfile.zip
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2|*.tbz2) tar xjf $1   ;;
+      *.tar.gz|*.tgz)   tar xzf $1   ;;
+      *.bz2)            bunzip2 $1   ;;
+      *.rar)            unrar x $1     ;;
+      *.gz)             gunzip $1    ;;
+      *.tar)            tar xf $1    ;;
+      *.zip)            unzip $1     ;;
+      *.Z)              uncompress $1;;
+      *.7z)             7z x $1      ;;
+      *)                echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
 }
 
-# sudo apt-get install exiftool
-function findpicgps() {
-  exiftool -c '%.6f' -GPSPosition $1
+# list directory after directory change
+function to() {
+    builtin cd "$@" && ls -al
 }
+
+# git commit message
+function gcomm() {
+    git commit -m $1
+}
+
+
