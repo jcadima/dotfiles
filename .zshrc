@@ -107,14 +107,3 @@ ex ()
   fi
 }
 
-# list directory after directory change
-function to() {
-    builtin cd "$@" && ls -al
-}
-
-# git commit message
-function gcomm() {
-    git commit -m $1
-}
-
-
