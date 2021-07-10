@@ -69,22 +69,6 @@ alias gp="git push -u origin master"
 alias du="du -h"
 alias df="df -h"
 
-# SSD
-alias ssd='ssh -i ~/swcorp-key/jcadima.pem jcadima@35.167.25.58'
-
-# SWCORP
-alias swcorp='ssh -i ~/swcorp-key/jcadima.pem jcadima@52.34.100.251'
-
-
-# Hotvue ssh access
-alias hotvue="ssh -i ~/.hotvue-key/id_rsa armadillo@206.81.1.213"
-
-# Ciwork
-# alias ciwork='ssh ciwork@ciwork.co'
-
-# Cireach
-# alias cireach='ssh ciwebmaster@158.69.193.158'
-
 
 # HOMESTEAD/VAGRANT
 alias vu='cd ~/Homestead && vagrant up && cd -'
