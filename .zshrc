@@ -86,6 +86,10 @@ alias vs='cd ~/Homestead && vagrant ssh && cd -'
 #                                           # 
 #############################################
 
+# Git log find by commit message
+function glf() { git log --all --grep="$1"; }
+
+
 # Extract compressed files,  use:  zipfile.zip
 ex ()
 {
