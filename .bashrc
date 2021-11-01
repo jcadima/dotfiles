@@ -10,7 +10,6 @@
 ######################################                                   
 
 alias x='exit'
-alias cls='clear' # or just use CTRL+L  ¯\_(ツ)_/¯
 alias ..='cd ..;ls -al'
 alias ...='cd ../..;ls -al'
 alias ebash='vim ~/.bashrc'
