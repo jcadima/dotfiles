@@ -4,7 +4,7 @@ export ZSH=$HOME/.oh-my-zsh
 # |_ / / _|| U |  / _/ \| \| || __|| |/ _| #
 #  /(_ \_ \|   | ( (( o ) \\ || _| | ( |_n #
 # /___||__/|_n_|  \__\_/|_|\_||_|  |_|\__/ #
-#					   #
+#            #
 ############################################
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
@@ -22,17 +22,13 @@ POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=004  # other dictories, 004=blue.
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=007
 POWERLEVEL9K_VIRTUALENV_BACKGROUND=008
 POWERLEVEL9K_VIRTUALENV_FOREGROUND=011
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_HOME_ICON=''
 POWERLEVEL9K_HOME_SUB_ICON=''
 POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_RAM_ICON=''
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-
-POWERLEVEL9K_VCS_SHORTEN_LENGTH=8  # number of chars beginning/end of Branch
-POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=13
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_middle" # truncate Branch
-POWERLEVEL9K_VCS_SHORTEN_DELIMITER=".."
 
 plugins=(
   git
@@ -45,7 +41,7 @@ source $ZSH/oh-my-zsh.sh
 #  / \ | |  | | / \ / _|| __|/ _| #
 # | o || |_ | || o |\_ \| _| \_ \ #
 # |_n_||___||_||_n_||__/|___||__/ #
-#			 	  #
+#         #
 ###################################
 alias cls="clear"
 alias x="exit"
@@ -64,6 +60,16 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias evim='vim ~/.vimrc'
 alias svim='source ~/.vimrc'
 
+alias dcb="docker-compose build"
+alias dcu="docker-compose up -d"
+alias dcbu="docker-compose up -d --build"
+alias dps="docker ps -a"
+alias dstop="docker-compose stop"
+alias dstart="docker-compose start"
+alias dcontainers='docker container ls -a'
+alias dimages="docker image ls"
+
+
 # Git
 alias gs="git status"
 alias ga='git add .'
@@ -73,10 +79,15 @@ alias gp="git push -u origin master"
 alias du="du -h"
 alias df="df -h"
 
+# DOCKER
+# Run all stopped containers:
+alias dlist='docker container ls -a -s'
+alias dstopall='docker container kill $(docker ps -q)'
+
 
 # HOMESTEAD/VAGRANT
 alias vu='cd ~/Homestead && vagrant up && cd -'
-alias vh='cd ~/Homestead && vagrant halt && cd -'
+alias vh='cd ~/Homestead && vagrant halt --force && cd -'
 alias vp='cd ~/Homestead && vagrant provision && cd -'
 alias vr='cd ~/Homestead && vagrant reload && cd -'
 alias vs='cd ~/Homestead && vagrant ssh && cd -'
@@ -94,24 +105,27 @@ alias vs='cd ~/Homestead && vagrant ssh && cd -'
 function glf() { git log --all --grep="$1"; }
 
 
-# Extract compressed files,  use:  zipfile.zip
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2|*.tbz2) tar xjf $1   ;;
-      *.tar.gz|*.tgz)   tar xzf $1   ;;
-      *.bz2)            bunzip2 $1   ;;
-      *.rar)            unrar x $1     ;;
-      *.gz)             gunzip $1    ;;
-      *.tar)            tar xf $1    ;;
-      *.zip)            unzip $1     ;;
-      *.Z)              uncompress $1;;
-      *.7z)             7z x $1      ;;
-      *)                echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+# Docker shortcuts
+function dinspect() {
+  docker inspect $1 | grep Status
 }
+
+
+function dlogs() {
+  docker logs -f $1
+}
+
+
+function dnetwork() {
+  docker inspect $1 | grep IP
+}
+
+function dmysql() {
+  docker exec -it $1 mysql -u $2 -p
+}
+
+function dbash() {
+  docker exec -it $1 bash
+}
+
 
