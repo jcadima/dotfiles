@@ -60,12 +60,15 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias evim='vim ~/.vimrc'
 alias svim='source ~/.vimrc'
 
-alias dcb="docker-compose build"
-alias dcu="docker-compose up -d"
-alias dcbu="docker-compose up -d --build"
+# DOCKER
+alias dlist='docker container ls -a -s'
+alias dstopall='docker container kill $(docker ps -q)' # stop all containers
+alias dcb="docker compose build"
+alias dcu="docker compose up -d"
+alias dcbu="docker compose up -d --build" # docker build+up
 alias dps="docker ps -a"
-alias dstop="docker-compose stop"
-alias dstart="docker-compose start"
+alias dstop="docker compose stop"
+alias dstart="docker compose start"
 alias dcontainers='docker container ls -a'
 alias dimages="docker image ls"
 
@@ -78,11 +81,6 @@ alias gp="git push -u origin master"
 # Human readable filesize
 alias du="du -h"
 alias df="df -h"
-
-# DOCKER
-# Run all stopped containers:
-alias dlist='docker container ls -a -s'
-alias dstopall='docker container kill $(docker ps -q)'
 
 
 # HOMESTEAD/VAGRANT
