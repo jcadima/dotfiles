@@ -94,8 +94,6 @@ Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install --no-dev -o'}
 call plug#end()
 
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MAPPINGS 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,12 +103,6 @@ let mapleader=","
 " removes highlighting of search terms
 nnoremap <leader><space> :nohlsearch<CR>
 
-
-" Map <C-Up> to scroll up half a page
-nnoremap <C-Up> <C-Up>
-
-" Map <C-Down> to scroll down half a page
-nnoremap <C-Down> <C-Down>
 
 if executable('intelephense')
   augroup LspPHPIntelephense
@@ -252,10 +244,10 @@ let g:NERDTreeWinPos = "right"
 
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <Space>f <cmd>Telescope find_files<cr>
+nnoremap <Space>g <cmd>Telescope live_grep<cr>
+nnoremap <Space>b <cmd>Telescope buffers<cr>
+nnoremap <Space>h <cmd>Telescope help_tags<cr>
 
 
 function! ShowDocumentation()
