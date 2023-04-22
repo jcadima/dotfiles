@@ -5,7 +5,6 @@ set number
 syntax on
 set updatetime=250
 set background=dark
-set iskeyword+=-  " adds '-' as a word character
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -38,6 +37,7 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set foldmethod=manual
 
 " Store yank or delete with paste on system clipboard
 set clipboard=unnamed
@@ -68,6 +68,10 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 " makes vim autocomplete (), [], {}, '', "", etc
 Plug 'jiangmiao/auto-pairs'
+
+" makes vim close html tags
+Plug 'alvan/vim-closetag'
+
 
 " see the git status of the current line in
 " the gutter
@@ -135,6 +139,55 @@ if executable('intelephense')
 endif
 
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => AUTOCLOSE HTML TAGS 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml,php'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ 'typescriptreact': 'jsxRegion,tsxRegion',
+    \ 'javascriptreact': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Return to last edit position when opening files 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -187,24 +240,16 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> gb <C-O><CR>
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-
 " use control+hjkl to move between split/vsplit panels
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 
+
+" 1/2 page up/down
+nnoremap <S-j>  <C-d>
+nnoremap <S-k> <C-u>
 
 " Enable spell check on git commit messages
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set spell
@@ -232,8 +277,6 @@ nnoremap <Right> :vertical resize +5<CR>
 nnoremap <Up> :resize -5<CR>
 nnoremap <Down> :resize +5<CR>
 
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
 
 " <CTRL>+E opens NERDTree file explorer on the right
 " after Caleb Porzio VSCode newsletter tip, file tree navigator only on the
@@ -243,20 +286,15 @@ let g:NERDTreeWinPos = "right"
 
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =>  TELESCOPE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Find files using Telescope command-line sugar.
 nnoremap <Space>f <cmd>Telescope find_files<cr>
 nnoremap <Space>g <cmd>Telescope live_grep<cr>
 nnoremap <Space>b <cmd>Telescope buffers<cr>
 nnoremap <Space>h <cmd>Telescope help_tags<cr>
 
-
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
