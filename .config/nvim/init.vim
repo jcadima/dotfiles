@@ -58,7 +58,7 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-Plug 'https://github.com/neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'othree/html5.vim'
 Plug 'airblade/vim-rooter'
 
@@ -72,6 +72,8 @@ Plug 'jiangmiao/auto-pairs'
 " makes vim close html tags
 Plug 'alvan/vim-closetag'
 
+" Adds dev icons
+Plug 'ryanoasis/vim-devicons'
 
 " see the git status of the current line in
 " the gutter
@@ -240,12 +242,12 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> gb <C-O><CR>
 
-" use control+hjkl to move between split/vsplit panels
-nnoremap <C-j> <C-W><C-J>
-nnoremap <C-k> <C-W><C-K>
-nnoremap <C-l> <C-W><C-L>
-nnoremap <C-h> <C-W><C-H>
 
+" use ALT + hjkl to move between split/vsplit panels
+nnoremap <A-j> <C-W><C-J>
+nnoremap <A-k> <C-W><C-K>
+nnoremap <A-l> <C-W><C-L>
+nnoremap <A-h> <C-W><C-H>
 
 " 1/2 page up/down
 nnoremap <S-j>  <C-d>
@@ -295,6 +297,12 @@ nnoremap <Space>g <cmd>Telescope live_grep<cr>
 nnoremap <Space>b <cmd>Telescope buffers<cr>
 nnoremap <Space>h <cmd>Telescope help_tags<cr>
 
+
+" Laravel Shortcuts for Telescope
+nnoremap <Space>m <cmd>Telescope find_files cwd=app/Models<CR>
+nnoremap <Space>c <cmd>Telescope find_files cwd=app/Http<CR>
+nnoremap <Space>v <cmd>Telescope find_files cwd=resources/views<CR>
+nnoremap <Space>d <cmd>Telescope find_files cwd=database<CR>
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
