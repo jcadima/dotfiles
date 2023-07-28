@@ -31,6 +31,8 @@ set cmdheight=2
 set noshowmode
 set nobackup   " no more swapfiles
 set nowritebackup
+set noswapfile
+set noundofile
 set encoding=UTF-8
 set fileencoding=UTF-8
 filetype plugin indent on
@@ -53,7 +55,8 @@ endif
 " => PLUGINS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VimPlug plugin manager
-call plug#begin()
+call plug#begin('~/AppData/Local/nvim/plugged')
+" call plug#begin()
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/ap/vim-css-color'
@@ -74,7 +77,6 @@ Plug 'alvan/vim-closetag'
 
 " Adds dev icons
 Plug 'ryanoasis/vim-devicons'
-
 " see the git status of the current line in
 " the gutter
 Plug 'airblade/vim-gitgutter'
@@ -207,6 +209,9 @@ nnoremap <S-Tab> :tabprevious<CR>
 inoremap jj <Esc>
 cnoremap jj <Esc>
 
+" j and k 
+inoremap kk <Esc>
+cnoremap kk <Esc>
 
 
 inoremap <silent><expr> <TAB>
@@ -242,12 +247,15 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> gb <C-O><CR>
 
-
 " use ALT + hjkl to move between split/vsplit panels
 nnoremap <A-j> <C-W><C-J>
 nnoremap <A-k> <C-W><C-K>
 nnoremap <A-l> <C-W><C-L>
 nnoremap <A-h> <C-W><C-H>
+
+" Goto previous and next tabs
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 " 1/2 page up/down
 nnoremap <S-j>  <C-d>
@@ -279,6 +287,10 @@ nnoremap <Right> :vertical resize +5<CR>
 nnoremap <Up> :resize -5<CR>
 nnoremap <Down> :resize +5<CR>
 
+" Show the buffer number on the top of window tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
 
 " <CTRL>+E opens NERDTree file explorer on the right
 " after Caleb Porzio VSCode newsletter tip, file tree navigator only on the
@@ -303,6 +315,7 @@ nnoremap <Space>m <cmd>Telescope find_files cwd=app/Models<CR>
 nnoremap <Space>c <cmd>Telescope find_files cwd=app/Http<CR>
 nnoremap <Space>v <cmd>Telescope find_files cwd=resources/views<CR>
 nnoremap <Space>d <cmd>Telescope find_files cwd=database<CR>
+
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
