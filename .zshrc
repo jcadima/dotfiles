@@ -43,22 +43,23 @@ source $ZSH/oh-my-zsh.sh
 # |_n_||___||_||_n_||__/|___||__/ #
 #         #
 ###################################
+# NOTE: install exa to replace "ls"
 alias cls="clear"
 alias x="exit"
-alias ..="cd ..;ls -al"
-alias ...="cd ../..;ls -al"
+alias ..="cd ..;exa -al"
+alias ...="cd ../..;exa -al"
 alias ehost='sudo vim /etc/hosts'
 alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias ezsh='vim ~/.zshrc'
-alias www='cd ~/www;ls -al'
+alias www='cd ~/www;exa -al'
+alias code='cd ~/code;exa -al'
 alias szsh='source ~/.zshrc'
-alias docs='cd ~/Documents;ls -al'
-alias downs='cd ~/Downloads;ls -al'
-alias pics='cd ~/Pictures;ls -al'
-alias vids='cd ~/Videos;ls -al'
+alias docs='cd ~/Documents;exa -al'
+alias downs='cd ~/Downloads;exa -al'
+alias pics='cd ~/Pictures;exa -al'
+alias vids='cd ~/Videos;exa -al'
 alias myip="curl http://ipecho.net/plain; echo"
-alias evim='vim ~/.vimrc'
-alias svim='source ~/.vimrc'
+alias envim='vim ~/.config/nvim/init.vim'
 
 # DOCKER
 alias dlist='docker container ls -a -s'
