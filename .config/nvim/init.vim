@@ -55,8 +55,8 @@ endif
 " => PLUGINS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VimPlug plugin manager
-call plug#begin('~/AppData/Local/nvim/plugged')
-" call plug#begin()
+" call plug#begin('~/AppData/Local/nvim/plugged')  Windows 
+call plug#begin()
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/ap/vim-css-color'
@@ -286,6 +286,21 @@ nnoremap <Left> :vertical resize -5<CR>
 nnoremap <Right> :vertical resize +5<CR>
 nnoremap <Up> :resize -5<CR>
 nnoremap <Down> :resize +5<CR>
+
+" Show the buffer number on the top of window tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+
+" Switch to the next buffer
+nnoremap <Tab> :bnext<CR>
+
+" Switch to the previous buffer
+nnoremap <S-Tab> :bprev<CR>
+
+" Map <Leader>s to search and replace in the current buffer
+" replace string currently in cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 " Show the buffer number on the top of window tabline
 let g:airline#extensions#tabline#enabled = 1
