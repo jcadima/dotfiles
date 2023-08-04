@@ -64,7 +64,8 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'othree/html5.vim'
 Plug 'airblade/vim-rooter'
-
+Plug 'sindrets/diffview.nvim' " Diff View Git
+Plug 'justinmk/vim-sneak'
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
