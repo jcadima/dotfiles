@@ -55,8 +55,8 @@ endif
 " => PLUGINS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VimPlug plugin manager
-" call plug#begin('~/AppData/Local/nvim/plugged')  Windows 
-call plug#begin()
+" call plug#begin('~/AppData/Local/nvim/plugged')  " Windows 
+call plug#begin()  " Linux
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/ap/vim-css-color'
@@ -142,8 +142,6 @@ if executable('intelephense')
         \})
   augroup END
 endif
-
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
