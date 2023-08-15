@@ -297,6 +297,12 @@ nnoremap <Tab> :bnext<CR>
 " Switch to the previous buffer
 nnoremap <S-Tab> :bprev<CR>
 
+" Close current buffer 
+nnoremap <leader>q :bd<CR>
+
+" Close all buffers except the current one
+nnoremap <leader>a :bufdo if bufnr('%') != bufnr('') \| bd \| endif<CR>
+ 
 " Map <Leader>s to search and replace in the current buffer
 " replace string currently in cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
