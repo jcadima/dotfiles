@@ -122,6 +122,7 @@ alias cls="clear"
 alias x="exit"
 alias ..="cd ..;exa -al"
 alias ...="cd ../..;exa -al"
+alias cat='batcat'  # apt install bat, executable: /usr/bin/batcat
 alias ehost='sudo vim /etc/hosts'
 alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias ezsh='vim ~/.zshrc'
