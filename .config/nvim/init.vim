@@ -204,6 +204,12 @@ autocmd BufReadPost *
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
 
+" Switch to the next buffer with Shift+l
+nnoremap <S-l> :bnext<CR>
+
+" Switch to the previous buffer with Shift+h
+nnoremap <S-h> :bprev<CR>
+
 " remap ESC key
 inoremap jj <Esc>
 cnoremap jj <Esc>
