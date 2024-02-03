@@ -122,7 +122,7 @@ alias cls="clear"
 alias x="exit"
 alias ..="cd ..;exa -al"
 alias ...="cd ../..;exa -al"
-alias cat='batcat'  # apt install bat, executable: /usr/bin/batcat
+# alias cat='batcat'  # apt install bat, executable: /usr/bin/batcat
 alias ehost='sudo vim /etc/hosts'
 alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias ezsh='vim ~/.zshrc'
@@ -148,7 +148,7 @@ alias dcbu="docker compose up -d --build" # docker build+up
 alias dps="docker ps -a"
 alias dstop="docker compose stop"
 alias dstart="docker compose start"
-alias dcontainers='docker container ls -a'
+alias dcontainers='docker ps --format "{{.Names}}"'
 alias dimages="docker image ls"
 
 
@@ -177,6 +177,11 @@ alias vs='cd ~/Homestead && vagrant ssh && cd -'
 # |_|  |___||_|\_|\__| |_| |_|\_/|_|\_||__/ #
 #                                           # 
 #############################################
+# sublist3r subdomain scanner
+function scandomain() {
+    sublist3r -d $1
+}
+
 
 # Git log find by commit message
 function glf() { git log --all --grep="$1"; }
@@ -197,6 +202,8 @@ function dnetwork() {
   docker inspect $1 | grep IP
 }
 
+# $1: Database HOST 
+# $2: Database NAME
 function dmysql() {
   docker exec -it $1 mysql -u $2 -p
 }
@@ -205,4 +212,7 @@ function dbash() {
   docker exec -it $1 bash
 }
 
-
+export EDITOR=nvim
+export VISUAL=nnvim
+export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH=$PATH:/path/to/composer-global-bin

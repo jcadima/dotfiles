@@ -64,6 +64,8 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'othree/html5.vim'
 Plug 'airblade/vim-rooter'
+Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot'
 Plug 'sindrets/diffview.nvim' " Diff View Git
 Plug 'justinmk/vim-sneak'
 " Telescope
@@ -190,6 +192,11 @@ let g:closetag_shortcut = '>'
 "
 let g:closetag_close_shortcut = '<leader>>'
 
+" phpactor 
+let g:coc_global_extensions = [
+      \ 'coc-phpactor',
+      \ ]
+let g:coc_phpactor_path = '/home/jc/.local/bin/phpactor'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Return to last edit position when opening files 
@@ -315,6 +322,7 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 " Show the buffer number on the top of window tabline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 
@@ -324,7 +332,8 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 nmap <silent> <C-E> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
 
-
+" show hidden files
+let NERDTreeShowHidden=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " =>  TELESCOPE
@@ -341,6 +350,12 @@ nnoremap <Space>m <cmd>Telescope find_files cwd=app/Models<CR>
 nnoremap <Space>c <cmd>Telescope find_files cwd=app/Http<CR>
 nnoremap <Space>v <cmd>Telescope find_files cwd=resources/views<CR>
 nnoremap <Space>d <cmd>Telescope find_files cwd=database<CR>
+
+
+" show hidden files
+let g:telescope#setup = {
+      \ 'file_ignore_patterns': ['.*'],
+      \ }
 
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
