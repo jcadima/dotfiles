@@ -124,6 +124,7 @@ alias ..="cd ..;exa -al"
 alias ...="cd ../..;exa -al"
 # alias cat='batcat'  # apt install bat, executable: /usr/bin/batcat
 alias ehost='sudo vim /etc/hosts'
+alias econfig='nvim ~/.ssh/config'
 alias eyaml='vim ~/Homestead/Homestead.yaml'
 alias ezsh='vim ~/.zshrc'
 alias www='cd ~/www;exa -al'
@@ -134,7 +135,6 @@ alias downs='cd ~/Downloads;exa -al'
 alias pics='cd ~/Pictures;exa -al'
 alias vids='cd ~/Videos;exa -al'
 alias myip="curl http://ipecho.net/plain; echo"
-alias envim='vim ~/.config/nvim/init.vim'
 alias nv='nvim'
 alias zz='sudo systemctl suspend'
 alias off='sudo poweroff'
@@ -156,6 +156,7 @@ alias dimages="docker image ls"
 alias gs="git status"
 alias ga='git add .'
 alias gp="git push -u origin master"
+alias gl='git log --oneline --graph --decorate --all'
 
 # Human readable filesize
 alias du="du -h"
@@ -212,7 +213,7 @@ function dbash() {
   docker exec -it $1 bash
 }
 
-export EDITOR=nvim
-export VISUAL=nnvim
+export EDITOR=vim
+export VISUAL=vim
 export PATH="$HOME/.npm-global/bin:$PATH"
-export PATH=$PATH:/path/to/composer-global-bin
+#export PATH="$HOME/neovim/build/bin/nvim:$PATH"
