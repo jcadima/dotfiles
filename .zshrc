@@ -35,8 +35,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
 
+# zstyle ':omz:update' frequency 13
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
@@ -118,23 +118,21 @@ source $ZSH/oh-my-zsh.sh
 #         #
 ###################################
 # NOTE: install exa to replace "ls"
-alias cls="clear"
 alias x="exit"
-alias ..="cd ..;exa -al"
-alias ...="cd ../..;exa -al"
+alias ..="cd ..;ls -al"
+alias ...="cd ../..;ls -al"
 # alias cat='batcat'  # apt install bat, executable: /usr/bin/batcat
-alias ehost='sudo vim /etc/hosts'
+alias ehost='sudo nvim /etc/hosts'
 alias econfig='nvim ~/.ssh/config'
-alias eyaml='vim ~/Homestead/Homestead.yaml'
-alias ezsh='vim ~/.zshrc'
-alias www='cd ~/www;exa -al'
-alias code='cd ~/code;exa -al'
+alias eyaml='nvim ~/Homestead/Homestead.yaml'
+alias ezsh='nvim ~/.zshrc'
+alias www='cd ~/www;ls -al'
 alias szsh='source ~/.zshrc'
-alias docs='cd ~/Documents;exa -al'
-alias downs='cd ~/Downloads;exa -al'
-alias pics='cd ~/Pictures;exa -al'
-alias vids='cd ~/Videos;exa -al'
-alias myip="curl http://ipecho.net/plain; echo"
+alias docs='cd ~/Documents;ls -al'
+alias downs='cd ~/Downloads;ls -al'
+alias pics='cd ~/Pictures;ls -al'
+alias vids='cd ~/Videos;ls -al'
+alias myip="curl https://whatismyip.akamai.com; echo"
 alias nv='nvim'
 alias zz='sudo systemctl suspend'
 alias off='sudo poweroff'
@@ -161,14 +159,6 @@ alias gl='git log --oneline --graph --decorate --all'
 # Human readable filesize
 alias du="du -h"
 alias df="df -h"
-
-
-# HOMESTEAD/VAGRANT
-alias vu='cd ~/Homestead && vagrant up && cd -'
-alias vh='cd ~/Homestead && vagrant halt --force && cd -'
-alias vp='cd ~/Homestead && vagrant provision && cd -'
-alias vr='cd ~/Homestead && vagrant reload && cd -'
-alias vs='cd ~/Homestead && vagrant ssh && cd -'
 
 
 #############################################
@@ -217,3 +207,4 @@ export EDITOR=vim
 export VISUAL=vim
 export PATH="$HOME/.npm-global/bin:$PATH"
 #export PATH="$HOME/neovim/build/bin/nvim:$PATH"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
